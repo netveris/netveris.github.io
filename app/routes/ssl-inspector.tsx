@@ -30,7 +30,7 @@ const getDemoSSLInfo = (domain: string): SSLInfo => {
   const validTo = new Date(today);
   validTo.setFullYear(today.getFullYear() + 1);
   const daysRemaining = Math.floor((validTo.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
-  
+
   return {
     domain,
     valid: true,
@@ -56,13 +56,16 @@ export default function SSLInspector() {
       setError("Please enter a domain name");
       return;
     }
-    
+
     setLoading(true);
     setError(null);
-    
+
     // Simulate analysis delay and show demo data
     setTimeout(() => {
-      const cleanDomain = domain.trim().replace(/^https?:\/\//, "").replace(/\/.*$/, "");
+      const cleanDomain = domain
+        .trim()
+        .replace(/^https?:\/\//, "")
+        .replace(/\/.*$/, "");
       setResult(getDemoSSLInfo(cleanDomain));
       setShowDemo(true);
       setLoading(false);
@@ -102,9 +105,9 @@ export default function SSLInspector() {
             <Alert style={{ marginTop: "1rem" }}>
               <Info size={16} />
               <AlertDescription>
-                <strong>Demo Mode:</strong> SSL inspection requires server-side TLS connections. 
-                Below is example data showing typical certificate information. 
-                For real inspection, use tools like <code>openssl s_client</code> or online SSL checkers.
+                <strong>Demo Mode:</strong> SSL inspection requires server-side TLS connections. Below is example data
+                showing typical certificate information. For real inspection, use tools like{" "}
+                <code>openssl s_client</code> or online SSL checkers.
               </AlertDescription>
             </Alert>
           )}

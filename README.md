@@ -186,29 +186,20 @@ This repository is configured for **automatic deployment** to GitHub Pages:
 
 1. Push to `main` branch
 2. GitHub Actions builds and deploys automatically
-3. Access at: `https://netveris.github.io`
+3. Access at: **https://netveris.github.io**
 
-### Other Platforms
+### Self-Hosting
 
-<table>
-  <tr>
-    <td align="center" width="150">
-      <a href="https://vercel.com/new">
-        <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Deploy to Vercel">
-      </a>
-    </td>
-    <td align="center" width="150">
-      <a href="https://app.netlify.com/start">
-        <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Deploy to Netlify">
-      </a>
-    </td>
-    <td align="center" width="150">
-      <a href="https://cloud.digitalocean.com/apps">
-        <img src="https://img.shields.io/badge/DigitalOcean-0080FF?style=for-the-badge&logo=digitalocean&logoColor=white" alt="Deploy to DigitalOcean">
-      </a>
-    </td>
-  </tr>
-</table>
+You can also deploy Netveris on your own infrastructure:
+
+```bash
+# Using Docker
+docker-compose up -d
+
+# Or build manually
+npm run build
+npm run start
+```
 
 ---
 

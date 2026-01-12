@@ -46,10 +46,10 @@ export default function DNSLookup() {
       setError("Please enter a domain name");
       return;
     }
-    
+
     setLoading(true);
     setError(null);
-    
+
     // Simulate lookup delay and show demo data
     setTimeout(() => {
       setRecords(getDemoRecords(domain));
@@ -126,9 +126,9 @@ export default function DNSLookup() {
               <Alert className={styles.alert}>
                 <Info className={styles.alertIcon} />
                 <AlertDescription>
-                  <strong>Demo Mode:</strong> DNS lookups require server-side execution. 
-                  Below is example data showing what DNS records look like. 
-                  For real lookups, use tools like <code>nslookup</code> or <code>dig</code>.
+                  <strong>Demo Mode:</strong> DNS lookups require server-side execution. Below is example data showing
+                  what DNS records look like. For real lookups, use tools like <code>nslookup</code> or <code>dig</code>
+                  .
                 </AlertDescription>
               </Alert>
             )}
