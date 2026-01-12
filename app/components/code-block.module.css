@@ -1,0 +1,82 @@
+.container {
+  background: #1e1e1e;
+  border: 1px solid #2d2d2d;
+  border-radius: var(--radius-3);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  background: #2d2d2d;
+  border-bottom: 1px solid #3d3d3d;
+}
+
+.macDots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+}
+
+.dot.red {
+  background: #ff5f56;
+}
+
+.dot.yellow {
+  background: #ffbd2e;
+}
+
+.dot.green {
+  background: #27c93f;
+}
+
+.language {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background: transparent;
+  border: 1px solid #444;
+  border-radius: var(--radius-2);
+  color: #bbb;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copyButton:hover {
+  background: #3d3d3d;
+  border-color: #555;
+  color: #fff;
+}
+
+.pre {
+  margin: 0;
+  padding: var(--space-4);
+  overflow-x: auto;
+}
+
+.code {
+  font-family: var(--font-code);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}

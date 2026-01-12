@@ -1,0 +1,172 @@
+.container {
+  min-height: 100vh;
+  padding: var(--space-6);
+  background: var(--color-neutral-1);
+}
+
+.content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.card {
+  background: var(--color-neutral-2);
+  border: 1px solid var(--color-neutral-6);
+  border-radius: var(--radius-3);
+  padding: var(--space-6);
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-neutral-12);
+  margin: 0 0 var(--space-5) 0;
+}
+
+.cardTitle svg {
+  color: var(--color-accent-9);
+}
+
+.formGroup {
+  margin-bottom: var(--space-5);
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-neutral-11);
+  margin-bottom: var(--space-2);
+}
+
+.select,
+.input {
+  width: 100%;
+  padding: var(--space-3);
+  background: var(--color-neutral-1);
+  border: 1px solid var(--color-neutral-6);
+  border-radius: var(--radius-2);
+  color: var(--color-neutral-12);
+  font-size: 14px;
+}
+
+.select:focus,
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent-8);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: var(--space-3);
+  background: var(--color-neutral-1);
+  border: 1px solid var(--color-neutral-6);
+  border-radius: var(--radius-2);
+  color: var(--color-neutral-12);
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-accent-8);
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--color-neutral-10);
+  margin-top: var(--space-2);
+  margin-bottom: 0;
+}
+
+.generateButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-accent-9);
+  color: var(--color-accent-contrast);
+  border: none;
+  border-radius: var(--radius-2);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.generateButton:hover {
+  background: var(--color-accent-10);
+}
+
+.outputSection {
+  margin-bottom: var(--space-5);
+}
+
+.outputHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.outputLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-neutral-11);
+}
+
+.tokenBox {
+  padding: var(--space-4);
+  background: var(--color-neutral-1);
+  border: 1px solid var(--color-neutral-6);
+  border-radius: var(--radius-2);
+  word-break: break-all;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--color-accent-11);
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+}
+
+.info {
+  padding: var(--space-5);
+  background: var(--color-accent-3);
+  border: 1px solid var(--color-accent-6);
+  border-radius: var(--radius-2);
+}
+
+.infoTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-accent-11);
+  margin-bottom: var(--space-3);
+}
+
+.infoText {
+  font-size: 14px;
+  color: var(--color-neutral-11);
+  line-height: 1.8;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

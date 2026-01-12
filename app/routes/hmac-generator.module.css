@@ -1,0 +1,109 @@
+.container {
+  min-height: 100vh;
+  padding: var(--space-6);
+  background: var(--color-neutral-1);
+}
+
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.textarea {
+  width: 100%;
+  padding: var(--space-3);
+  background: var(--color-neutral-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary-7);
+}
+
+.algorithmGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+}
+
+.algoBtn {
+  padding: var(--space-3);
+  background: var(--color-neutral-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.algoBtn:hover {
+  background: var(--color-neutral-3);
+}
+
+.algoBtn.active {
+  background: var(--color-primary-3);
+  border-color: var(--color-primary-7);
+  color: var(--color-primary-11);
+}
+
+.resultBox {
+  padding: var(--space-4);
+  background: var(--color-neutral-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2);
+  overflow-x: auto;
+}
+
+.resultCode {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  word-break: break-all;
+  color: var(--color-success-11);
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.useCases h4 {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.useCases ul {
+  list-style: disc;
+  padding-left: var(--space-5);
+}
+
+.useCases li {
+  margin-bottom: var(--space-1);
+}

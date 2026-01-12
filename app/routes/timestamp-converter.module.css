@@ -1,0 +1,120 @@
+.container {
+  min-height: 100vh;
+  padding: var(--space-6);
+  background: var(--color-neutral-1);
+}
+
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.clockCard {
+  background: linear-gradient(135deg, var(--color-primary-3), var(--color-primary-4));
+  border: 1px solid var(--color-primary-6);
+}
+
+.clockContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-6) !important;
+}
+
+.liveTime {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.timeLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.timeDisplay {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+.dateDisplay {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.liveTimestamp {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+.converterContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.inputRow {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.inputRow input {
+  flex: 1;
+}
+
+.referenceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-3);
+}
+
+.refItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  background: var(--color-neutral-2);
+  border-radius: var(--radius-2);
+}
+
+.refLabel {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.refValue {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+@media (max-width: 640px) {
+  .clockContent {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  .liveTimestamp {
+    align-items: center;
+  }
+
+  .timeDisplay {
+    font-size: 2rem;
+  }
+}

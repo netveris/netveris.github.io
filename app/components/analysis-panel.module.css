@@ -1,0 +1,72 @@
+.container {
+  background: var(--color-neutral-1);
+  border: 1px solid var(--color-neutral-6);
+  border-radius: var(--radius-3);
+  overflow: hidden;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4);
+  background: var(--color-neutral-2);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.header:hover {
+  background: var(--color-neutral-3);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-neutral-12);
+}
+
+.count {
+  font-size: 0.875rem;
+  color: var(--color-neutral-11);
+  background: var(--color-neutral-4);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-2);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5);
+}
+
+.severityGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.severityTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-neutral-11);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-neutral-6);
+}
+
+.empty {
+  text-align: center;
+  color: var(--color-neutral-11);
+  padding: var(--space-6);
+  margin: 0;
+}

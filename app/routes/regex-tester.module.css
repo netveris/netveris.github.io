@@ -1,0 +1,176 @@
+.container {
+  min-height: 100vh;
+  background: var(--color-neutral-1);
+  padding-bottom: var(--space-8);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.inputCard,
+.commonPatterns,
+.testCard,
+.resultsCard,
+.matchesCard,
+.noMatches {
+  padding: var(--space-5);
+}
+
+.inputCard h3,
+.commonPatterns h3,
+.testCard h3,
+.resultsCard h3,
+.matchesCard h3 {
+  margin: 0 0 var(--space-4) 0;
+  color: var(--color-neutral-12);
+  font-size: var(--font-size-4);
+  font-weight: 600;
+}
+
+.regexInput {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.regexDelimiter {
+  font-size: var(--font-size-5);
+  font-weight: 600;
+  color: var(--color-accent-9);
+  font-family: var(--font-code);
+}
+
+.patternInput {
+  flex: 1;
+  font-family: var(--font-code);
+}
+
+.flagsInput {
+  width: 80px;
+  font-family: var(--font-code);
+}
+
+.flagsHelp {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  font-size: var(--font-size-1);
+  color: var(--color-neutral-11);
+  flex-wrap: wrap;
+}
+
+.error {
+  padding: var(--space-3);
+  background: var(--color-error-3);
+  color: var(--color-error-11);
+  border-radius: var(--radius-2);
+  font-size: var(--font-size-2);
+  margin-top: var(--space-3);
+}
+
+.patternGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-2);
+}
+
+.testButton {
+  margin-top: var(--space-4);
+  width: 100%;
+}
+
+.highlightedText {
+  font-family: var(--font-code);
+  font-size: var(--font-size-2);
+  line-height: 1.8;
+  padding: var(--space-4);
+  background: var(--color-neutral-2);
+  border-radius: var(--radius-2);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.highlight {
+  background: var(--color-accent-4);
+  color: var(--color-accent-12);
+  padding: 2px 4px;
+  border-radius: var(--radius-1);
+  font-weight: 600;
+}
+
+.matchList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.matchItem {
+  padding: var(--space-4);
+  background: var(--color-neutral-2);
+  border-radius: var(--radius-2);
+  border: 1px solid var(--color-neutral-6);
+}
+
+.matchHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+
+.matchPosition {
+  font-size: var(--font-size-1);
+  color: var(--color-neutral-11);
+  font-family: var(--font-code);
+}
+
+.matchValue {
+  font-family: var(--font-code);
+  font-size: var(--font-size-3);
+  padding: var(--space-3);
+  background: var(--color-neutral-1);
+  border-radius: var(--radius-2);
+  border: 1px solid var(--color-neutral-6);
+  margin-bottom: var(--space-3);
+  color: var(--color-accent-11);
+  font-weight: 600;
+}
+
+.captureGroups,
+.namedGroups {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-neutral-6);
+}
+
+.captureGroups strong,
+.namedGroups strong {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-2);
+  color: var(--color-neutral-11);
+}
+
+.captureGroup,
+.namedGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  font-family: var(--font-code);
+  font-size: var(--font-size-2);
+  color: var(--color-neutral-12);
+}
+
+.noMatches {
+  text-align: center;
+  padding: var(--space-7);
+  color: var(--color-neutral-11);
+}

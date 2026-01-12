@@ -1,0 +1,149 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.card {
+  padding: var(--space-6);
+}
+
+.card h2 {
+  font-size: var(--font-size-4);
+  font-weight: 600;
+  margin-bottom: var(--space-5);
+  color: var(--color-neutral-12);
+}
+
+.card h3 {
+  font-size: var(--font-size-2);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+  color: var(--color-neutral-11);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.cidrInput {
+  position: relative;
+}
+
+.slash {
+  position: absolute;
+  left: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-neutral-11);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.cidrInput input {
+  padding-left: var(--space-6);
+}
+
+.error {
+  background: var(--color-error-2);
+  border: 1px solid var(--color-error-6);
+  border-radius: var(--radius-3);
+  padding: var(--space-3);
+  color: var(--color-error-11);
+  font-size: var(--font-size-1);
+  margin-bottom: var(--space-4);
+}
+
+.calculateButton {
+  width: 100%;
+  margin-bottom: var(--space-5);
+}
+
+.quickCidr {
+  border-top: 1px solid var(--color-neutral-6);
+  padding-top: var(--space-4);
+}
+
+.cidrButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.resultSection {
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-neutral-6);
+}
+
+.resultSection:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.resultGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.resultItem {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.label {
+  color: var(--color-neutral-11);
+  font-size: var(--font-size-1);
+}
+
+.value {
+  color: var(--color-neutral-12);
+  font-weight: 500;
+  font-family: var(--font-code);
+}
+
+.binary {
+  color: var(--color-accent-11);
+  font-family: var(--font-code);
+  font-size: var(--font-size-0);
+  word-break: break-all;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: var(--space-4);
+  }
+
+  .resultItem {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+
+  .cidrButtons {
+    justify-content: center;
+  }
+}

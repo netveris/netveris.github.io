@@ -1,0 +1,250 @@
+.container {
+  min-height: 100vh;
+  padding: var(--space-6);
+  background: var(--color-neutral-1);
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cardBody {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sectionTitle {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.inputGroup {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.colorInputWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-neutral-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2);
+  padding-left: var(--space-2);
+}
+
+.colorPicker {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-1);
+}
+
+.colorPicker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.colorPicker::-webkit-color-swatch {
+  border: none;
+  border-radius: var(--radius-1);
+}
+
+.textInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-mono);
+}
+
+.textInput:focus {
+  box-shadow: none;
+}
+
+.formatHints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.colorPreview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5);
+  border-radius: var(--radius-3);
+  min-height: 80px;
+}
+
+.previewText {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.saveBtn {
+  opacity: 0.8;
+}
+
+.saveBtn:hover {
+  opacity: 1;
+}
+
+.valuesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.valueItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-neutral-2);
+  border-radius: var(--radius-2);
+}
+
+.valueLabel {
+  font-weight: 600;
+  color: var(--text-secondary);
+  width: 50px;
+  flex-shrink: 0;
+}
+
+.valueCode {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+.placeholder {
+  color: var(--text-tertiary);
+  text-align: center;
+  padding: var(--space-6);
+}
+
+.componentsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+@media (max-width: 600px) {
+  .componentsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.componentGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.componentTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.componentBars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.componentRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.componentLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  width: 16px;
+}
+
+.barContainer {
+  flex: 1;
+  height: 12px;
+  background: var(--color-neutral-3);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.2s ease;
+}
+
+.componentValue {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  width: 40px;
+  text-align: right;
+}
+
+.savedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: var(--space-3);
+}
+
+.savedItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-neutral-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.savedItem:hover {
+  border-color: var(--color-primary-6);
+  background: var(--color-neutral-3);
+}
+
+.savedSwatch {
+  width: 100%;
+  height: 50px;
+  border-radius: var(--radius-1);
+}
+
+.savedHex {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}

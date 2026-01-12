@@ -1,0 +1,172 @@
+.container {
+  background: var(--color-neutral-1);
+  border: 1px solid var(--color-neutral-6);
+  border-radius: var(--radius-3);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-accent-9);
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-neutral-12);
+}
+
+.scoreSection {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.scoreCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.scoreCircle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 8px solid;
+}
+
+.scoreCircle.excellent {
+  border-color: var(--color-success-9);
+  background: var(--color-success-2);
+}
+
+.scoreCircle.good {
+  border-color: var(--color-success-8);
+  background: var(--color-success-2);
+}
+
+.scoreCircle.warning {
+  border-color: var(--amber-9);
+  background: var(--amber-2);
+}
+
+.scoreCircle.poor {
+  border-color: var(--color-error-9);
+  background: var(--color-error-2);
+}
+
+.scoreValue {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.scoreCircle.excellent .scoreValue {
+  color: var(--color-success-11);
+}
+
+.scoreCircle.good .scoreValue {
+  color: var(--color-success-10);
+}
+
+.scoreCircle.warning .scoreValue {
+  color: var(--amber-11);
+}
+
+.scoreCircle.poor .scoreValue {
+  color: var(--color-error-11);
+}
+
+.scoreMax {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-neutral-11);
+}
+
+.grade {
+  font-size: 1.125rem;
+  color: var(--color-neutral-11);
+  font-weight: 500;
+}
+
+.gradeValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.gradeValue.excellent {
+  color: var(--color-success-11);
+}
+
+.gradeValue.good {
+  color: var(--color-success-10);
+}
+
+.gradeValue.warning {
+  color: var(--amber-11);
+}
+
+.gradeValue.poor {
+  color: var(--color-error-11);
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.trend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.trendUp {
+  color: var(--color-success-9);
+}
+
+.trendDown {
+  color: var(--color-error-9);
+}
+
+.trendLabel {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-neutral-12);
+}
+
+.summaryText {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-neutral-11);
+}
+
+@media (max-width: 768px) {
+  .scoreSection {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .scoreCard {
+    justify-content: center;
+  }
+
+  .trend {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,161 @@
+.container {
+  min-height: 100vh;
+  padding: var(--space-6);
+  background: var(--color-neutral-1);
+}
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.genBtn {
+  width: 100%;
+}
+
+.bulkGroup {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.bulkSelect {
+  flex: 1;
+}
+
+.btnIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: var(--space-2);
+}
+
+.resultHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.countBadge {
+  margin-left: var(--space-2);
+}
+
+.uuidList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.uuidCard {
+  padding: var(--space-3);
+  background: var(--color-neutral-2);
+  border-radius: var(--radius-2);
+  border: 1px solid var(--color-neutral-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.uuidHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.versionBadge {
+  font-size: 0.75rem;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: var(--color-neutral-11);
+}
+
+.uuidValue {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.code {
+  flex: 1;
+  font-family: var(--font-code);
+  font-size: 0.875rem;
+  color: var(--color-neutral-12);
+  background: var(--color-neutral-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-2);
+  word-break: break-all;
+}
+
+.copyBtn {
+  padding: var(--space-2);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.copyIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.infoTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-neutral-12);
+}
+
+.infoText {
+  font-size: 0.875rem;
+  color: var(--color-neutral-11);
+  line-height: 1.5;
+}
+
+@media (min-width: 640px) {
+  .buttonGroup {
+    flex-direction: row;
+  }
+  
+  .genBtn {
+    width: auto;
+    flex: 1;
+  }
+  
+  .bulkGroup {
+    flex: 1;
+  }
+}

@@ -1,0 +1,171 @@
+.container {
+  min-height: 100vh;
+  padding: var(--space-6);
+  background: var(--color-neutral-1);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.optionsRow {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.optionItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-3);
+  font-weight: 500;
+}
+
+.directivesGrid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .directivesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .directivesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.activeCard {
+  border-color: var(--color-primary-6);
+  background: var(--surface-raised);
+}
+
+.inactiveCard {
+  opacity: 0.6;
+  background: var(--color-neutral-2);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.cardHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.directiveName {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.infoIcon {
+  color: var(--text-tertiary);
+  cursor: help;
+}
+
+.cardBody {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.valueList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  min-height: 32px;
+}
+
+.valueTag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-primary-3);
+  border: 1px solid var(--color-primary-6);
+  border-radius: var(--radius-2);
+  color: var(--color-primary-11);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.removeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  background: transparent;
+  border: none;
+  color: var(--color-primary-9);
+  cursor: pointer;
+  border-radius: var(--radius-1);
+  transition: all 0.15s;
+}
+
+.removeBtn:hover {
+  background: var(--color-error-4);
+  color: var(--color-error-11);
+}
+
+.addValue {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.addValue input {
+  flex: 1;
+}
+
+.quickAdd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border-default);
+}
+
+.quickBtn {
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-neutral-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-1);
+  font-size: 0.6875rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.quickBtn:hover:not(:disabled) {
+  background: var(--color-neutral-4);
+  color: var(--text-primary);
+  border-color: var(--color-primary-6);
+}
+
+.quickBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

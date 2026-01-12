@@ -1,0 +1,134 @@
+.container {
+  min-height: 100vh;
+  padding: var(--space-6);
+  background: var(--color-neutral-1);
+}
+
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.mainCard {
+  background: var(--surface-raised);
+}
+
+.secretSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.inputGroup {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.secretDisplay {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-neutral-2);
+  border-radius: var(--radius-2);
+}
+
+.secretCode {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  word-break: break-all;
+}
+
+.totpCard {
+  background: linear-gradient(135deg, var(--color-primary-3), var(--color-primary-4));
+  border: 1px solid var(--color-primary-6);
+}
+
+.totpContent {
+  padding: var(--space-6) !important;
+}
+
+.totpDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.totpCode {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-primary-11);
+}
+
+.separator {
+  opacity: 0.5;
+}
+
+.timerSection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.timerBar {
+  flex: 1;
+  height: 6px;
+  background: var(--color-neutral-4);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.timerFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition:
+    width 1s linear,
+    background-color 0.3s ease;
+}
+
+.setupSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.formGrid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .formGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.uriSection {
+  margin-top: var(--space-2);
+}
+
+.uriDisplay {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-neutral-2);
+  border-radius: var(--radius-2);
+  margin-top: var(--space-2);
+}
+
+.uri {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  word-break: break-all;
+  color: var(--text-secondary);
+}

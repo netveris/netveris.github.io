@@ -1,0 +1,164 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.statsCard {
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.stats {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  justify-content: center;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+}
+
+.addBadge {
+  background: var(--color-success-3);
+  color: var(--color-success-11);
+  border-color: var(--color-success-7);
+}
+
+.removeBadge {
+  background: var(--color-error-3);
+  color: var(--color-error-11);
+  border-color: var(--color-error-7);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.card {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.textarea {
+  font-family: var(--font-code);
+  font-size: var(--font-size-1);
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.diffCard {
+  padding: var(--space-6);
+}
+
+.diffCard h2 {
+  font-size: var(--font-size-4);
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+  color: var(--color-neutral-12);
+}
+
+.diffViewer {
+  background: var(--color-neutral-1);
+  border: 1px solid var(--color-neutral-6);
+  border-radius: var(--radius-3);
+  overflow-x: auto;
+  font-family: var(--font-code);
+  font-size: var(--font-size-1);
+  line-height: 1.6;
+}
+
+.diffLine {
+  display: grid;
+  grid-template-columns: 50px 30px 1fr;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-neutral-5);
+}
+
+.diffLine:last-child {
+  border-bottom: none;
+}
+
+.diffLine.add {
+  background: var(--color-success-2);
+}
+
+.diffLine.remove {
+  background: var(--color-error-2);
+}
+
+.diffLine.same {
+  background: transparent;
+}
+
+.lineNumber {
+  color: var(--color-neutral-10);
+  text-align: right;
+  user-select: none;
+}
+
+.lineType {
+  color: var(--color-neutral-11);
+  font-weight: 600;
+  text-align: center;
+}
+
+.add .lineType {
+  color: var(--color-success-11);
+}
+
+.remove .lineType {
+  color: var(--color-error-11);
+}
+
+.lineContent {
+  color: var(--color-neutral-12);
+  white-space: pre;
+}
+
+.add .lineContent {
+  color: var(--color-success-12);
+}
+
+.remove .lineContent {
+  color: var(--color-error-12);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: var(--space-4);
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .diffLine {
+    grid-template-columns: 40px 25px 1fr;
+    font-size: var(--font-size-0);
+  }
+}

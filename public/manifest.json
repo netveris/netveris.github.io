@@ -1,0 +1,19 @@
+{
+  "name": "Netveris - Security Analysis Tools",
+  "short_name": "Netveris",
+  "description": "Professional security analysis tools for HTTP headers, cookies, JWT tokens, and more",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1929",
+  "theme_color": "#00a3c7",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["security", "developer-tools", "utilities"],
+  "screenshots": []
+}

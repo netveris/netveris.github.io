@@ -1,0 +1,256 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--color-accent-2) 0%, var(--color-accent-3) 100%);
+  padding: var(--space-4);
+}
+
+.themeToggle {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 100;
+}
+
+.header {
+  max-width: 900px;
+  margin: 0 auto var(--space-6);
+  text-align: center;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-accent-11);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: var(--space-4);
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: var(--color-accent-12);
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.icon {
+  color: var(--color-accent-9);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-accent-9), var(--color-accent-11));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--color-neutral-11);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.inputCard {
+  background: light-dark(rgba(255, 255, 255, 0.95), rgba(0, 0, 0, 0.4));
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-neutral-6);
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.inputGroup {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.input {
+  flex: 1;
+}
+
+.button {
+  white-space: nowrap;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scoreCard {
+  background: light-dark(rgba(255, 255, 255, 0.95), rgba(0, 0, 0, 0.4));
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-neutral-6);
+  padding: var(--space-5);
+}
+
+.scoreContent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.scoreIcon {
+  color: var(--color-accent-9);
+  flex-shrink: 0;
+}
+
+.scoreTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-neutral-12);
+  margin: 0 0 var(--space-2);
+}
+
+.scoreValue {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: var(--space-2) 0;
+}
+
+.scoreValue[data-score="high"] {
+  color: var(--color-success-9);
+}
+
+.scoreValue[data-score="medium"] {
+  color: light-dark(#f59e0b, #fbbf24);
+}
+
+.scoreValue[data-score="low"] {
+  color: var(--color-error-9);
+}
+
+.scoreDescription {
+  font-size: 14px;
+  color: var(--color-neutral-11);
+  margin: 0;
+}
+
+.issuesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.issueCard {
+  background: light-dark(rgba(255, 255, 255, 0.95), rgba(0, 0, 0, 0.4));
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-neutral-6);
+  padding: var(--space-4);
+}
+
+.issueCard[data-severity="low"] {
+  border-left: 4px solid var(--color-success-9);
+}
+
+.issueCard[data-severity="medium"] {
+  border-left: 4px solid light-dark(#f59e0b, #fbbf24);
+}
+
+.issueCard[data-severity="high"] {
+  border-left: 4px solid var(--color-error-9);
+}
+
+.issueHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.issueCategory {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-neutral-12);
+  margin: 0;
+  flex: 1;
+}
+
+.severityBadge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.issueCard[data-severity="low"] .severityBadge {
+  background: var(--color-success-3);
+  color: var(--color-success-11);
+}
+
+.issueCard[data-severity="medium"] .severityBadge {
+  background: light-dark(#fef3c7, #78350f);
+  color: light-dark(#92400e, #fbbf24);
+}
+
+.issueCard[data-severity="high"] .severityBadge {
+  background: var(--color-error-3);
+  color: var(--color-error-11);
+}
+
+.issueItems {
+  margin: 0;
+  padding-left: 28px;
+  color: var(--color-neutral-11);
+}
+
+.issueItems li {
+  margin-bottom: var(--space-2);
+}
+
+.iconLow {
+  color: var(--color-success-9);
+}
+
+.iconMedium {
+  color: light-dark(#f59e0b, #fbbf24);
+}
+
+.iconHigh {
+  color: var(--color-error-9);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .inputGroup {
+    flex-direction: column;
+  }
+
+  .scoreContent {
+    flex-direction: column;
+    text-align: center;
+  }
+}

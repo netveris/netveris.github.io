@@ -1,0 +1,255 @@
+.container {
+  min-height: 100vh;
+  padding: var(--space-6);
+  background: var(--color-neutral-1);
+}
+
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cardBody {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.textarea {
+  width: 100%;
+  padding: var(--space-4);
+  background: var(--color-neutral-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary-7);
+}
+
+.shiftControl {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.shiftHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shiftLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.shiftBadge {
+  font-family: var(--font-mono);
+}
+
+.slider {
+  width: 100%;
+}
+
+.sliderLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.quickShifts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.quickLabel {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.quickBtn {
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-neutral-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-1);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.quickBtn:hover {
+  background: var(--color-neutral-4);
+  color: var(--text-primary);
+}
+
+.quickBtn.active {
+  background: var(--color-primary-4);
+  border-color: var(--color-primary-7);
+  color: var(--color-primary-11);
+}
+
+.outputBox {
+  min-height: 120px;
+  padding: var(--space-4);
+  background: var(--color-neutral-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2);
+}
+
+.outputCode {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.placeholder {
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.infoBox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-primary-3);
+  border-radius: var(--radius-2);
+  font-size: 0.8rem;
+  color: var(--color-primary-11);
+}
+
+.infoIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.rotationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-2);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.rotationItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-neutral-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+}
+
+.rotationItem:hover {
+  background: var(--color-neutral-3);
+  border-color: var(--color-primary-6);
+}
+
+.rotationItem.active {
+  background: var(--color-primary-3);
+  border-color: var(--color-primary-7);
+}
+
+.rotLabel {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-primary-9);
+  min-width: 45px;
+}
+
+.rotText {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.referenceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-3);
+}
+
+.refItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  background: var(--color-neutral-2);
+  border-radius: var(--radius-2);
+}
+
+.refItem strong {
+  font-family: var(--font-mono);
+  color: var(--color-primary-9);
+  font-size: 0.875rem;
+}
+
+.refItem span {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}

@@ -1,0 +1,130 @@
+.dialog {
+  max-width: 900px;
+  max-height: 85vh;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-accent-11);
+}
+
+.shortcutsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  padding: var(--space-4) 0;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.shortcutGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.groupTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-neutral-11);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--color-neutral-6);
+}
+
+.shortcutsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.shortcut {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-neutral-2);
+  border-radius: var(--radius-2);
+  transition: background 0.2s ease;
+}
+
+.shortcut:hover {
+  background: var(--color-neutral-3);
+}
+
+.keys {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.key {
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-neutral-4);
+  border: var(--border-size-1) solid var(--color-neutral-6);
+  border-radius: var(--radius-1);
+  font-family: var(--font-code), -apple-system, system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-neutral-12);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  min-width: 28px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.plus {
+  margin: 0 2px;
+  color: var(--color-neutral-9);
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.description {
+  color: var(--color-neutral-12);
+  font-size: 0.875rem;
+  text-align: right;
+}
+
+@media (max-width: 968px) {
+  .shortcutsContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .dialog {
+    max-height: 90vh;
+  }
+
+  .shortcutsContainer {
+    grid-template-columns: 1fr;
+    max-height: 70vh;
+    gap: var(--space-4);
+  }
+  
+  .shortcut {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
+  .description {
+    text-align: left;
+    font-size: 0.8125rem;
+  }
+
+  .key {
+    font-size: 0.6875rem;
+    padding: 4px var(--space-1);
+    min-width: 24px;
+  }
+}

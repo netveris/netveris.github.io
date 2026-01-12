@@ -1,0 +1,100 @@
+/* Typography */
+html {
+  --font-display: 700 var(--font-size-fluid-3) var(--font-neo-grotesque);
+  --font-heading: 600 var(--font-size-fluid-2) var(--font-neo-grotesque);
+  --font-subheading: 500 var(--font-size-fluid-1) var(--font-neo-grotesque);
+  --font-body: var(--font-size-fluid-0) var(--font-neo-grotesque);
+  --font-caption: var(--font-size-0) var(--font-neo-grotesque);
+  --font-code: var(--font-size-0) var(--font-monospace-code);
+}
+
+html {
+  /* Neutral colors - Clean, bright foundation */
+  --color-neutral-1: var(--gray-1);
+  --color-neutral-2: var(--gray-2);
+  --color-neutral-3: var(--gray-3);
+  --color-neutral-4: var(--gray-4);
+  --color-neutral-5: var(--gray-5);
+  --color-neutral-6: var(--gray-6);
+  --color-neutral-7: var(--gray-7);
+  --color-neutral-8: var(--gray-8);
+  --color-neutral-9: var(--gray-9);
+  --color-neutral-10: var(--gray-10);
+  --color-neutral-11: var(--gray-11);
+  --color-neutral-12: var(--gray-12);
+  --color-neutral-contrast: var(--gray-contrast);
+
+  /* Accent colors - Cool cyan for modern look */
+  --color-accent-1: var(--cyan-1);
+  --color-accent-2: var(--cyan-2);
+  --color-accent-3: var(--cyan-3);
+  --color-accent-4: var(--cyan-4);
+  --color-accent-5: var(--cyan-5);
+  --color-accent-6: var(--cyan-6);
+  --color-accent-7: var(--cyan-7);
+  --color-accent-8: var(--cyan-8);
+  --color-accent-9: var(--cyan-9);
+  --color-accent-10: var(--cyan-10);
+  --color-accent-11: var(--cyan-11);
+  --color-accent-12: var(--cyan-12);
+  --color-accent-contrast: var(--cyan-contrast);
+
+  /* Error colors - High risk indicator */
+  --color-error-1: var(--red-1);
+  --color-error-2: var(--red-2);
+  --color-error-3: var(--red-3);
+  --color-error-4: var(--red-4);
+  --color-error-5: var(--red-5);
+  --color-error-6: var(--red-6);
+  --color-error-7: var(--red-7);
+  --color-error-8: var(--red-8);
+  --color-error-9: var(--red-9);
+  --color-error-10: var(--red-10);
+  --color-error-11: var(--red-11);
+  --color-error-12: var(--red-12);
+  --color-error-contrast: var(--red-contrast);
+
+  /* Success colors - Secure indicator */
+  --color-success-1: var(--green-1);
+  --color-success-2: var(--green-2);
+  --color-success-3: var(--green-3);
+  --color-success-4: var(--green-4);
+  --color-success-5: var(--green-5);
+  --color-success-6: var(--green-6);
+  --color-success-7: var(--green-7);
+  --color-success-8: var(--green-8);
+  --color-success-9: var(--green-9);
+  --color-success-10: var(--green-10);
+  --color-success-11: var(--green-11);
+  --color-success-12: var(--green-12);
+  --color-success-contrast: var(--green-contrast);
+
+  /* Warning colors - Caution indicator */
+  --color-warning-1: var(--amber-1);
+  --color-warning-2: var(--amber-2);
+  --color-warning-3: var(--amber-3);
+  --color-warning-4: var(--amber-4);
+  --color-warning-5: var(--amber-5);
+  --color-warning-6: var(--amber-6);
+  --color-warning-7: var(--amber-7);
+  --color-warning-8: var(--amber-8);
+  --color-warning-9: var(--amber-9);
+  --color-warning-10: var(--amber-10);
+  --color-warning-11: var(--amber-11);
+  --color-warning-12: var(--amber-12);
+  --color-warning-contrast: var(--amber-contrast);
+
+  /* Surface colors for cards and panels */
+  --surface-base: light-dark(white, var(--color-neutral-2));
+  --surface-raised: light-dark(white, var(--color-neutral-3));
+  --surface-overlay: light-dark(white, var(--color-neutral-4));
+  
+  /* Border colors */
+  --border-subtle: var(--color-neutral-6);
+  --border-strong: var(--color-neutral-8);
+  
+  /* Text colors */
+  --text-primary: var(--color-neutral-12);
+  --text-secondary: var(--color-neutral-11);
+  --text-tertiary: var(--color-neutral-10);
+}
