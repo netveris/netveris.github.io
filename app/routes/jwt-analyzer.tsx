@@ -8,10 +8,7 @@ import { ThemeToggle } from "~/components/theme-toggle";
 import styles from "./jwt-analyzer.module.css";
 
 export function meta() {
-  return [
-    { title: "JWT Analyzer - Netveris" },
-    { name: "description", content: "Analyze and decode JWT tokens" },
-  ];
+  return [{ title: "JWT Analyzer - Netveris" }, { name: "description", content: "Analyze and decode JWT tokens" }];
 }
 
 export default function JwtAnalyzer() {
@@ -39,7 +36,14 @@ export default function JwtAnalyzer() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-6)" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "var(--space-6)",
+          }}
+        >
           <Link to="/" className={styles.backLink}>
             <ArrowLeft size={18} />
             Back to Home
@@ -98,10 +102,7 @@ export default function JwtAnalyzer() {
                 <p className={styles.partDescription}>
                   Contains metadata about the token, including the signing algorithm and token type.
                 </p>
-                <CodeBlock
-                  code={JSON.stringify(decoded.header, null, 2)}
-                  language="json"
-                />
+                <CodeBlock code={JSON.stringify(decoded.header, null, 2)} language="json" />
               </div>
 
               <div className={`${styles.partCard} ${styles.partPayload}`}>
@@ -112,10 +113,7 @@ export default function JwtAnalyzer() {
                 <p className={styles.partDescription}>
                   Contains claims (statements about the user and additional data). This data is readable by anyone.
                 </p>
-                <CodeBlock
-                  code={JSON.stringify(decoded.payload, null, 2)}
-                  language="json"
-                />
+                <CodeBlock code={JSON.stringify(decoded.payload, null, 2)} language="json" />
               </div>
 
               <div className={`${styles.partCard} ${styles.partSignature}`}>
@@ -124,12 +122,10 @@ export default function JwtAnalyzer() {
                   Signature
                 </h3>
                 <p className={styles.partDescription}>
-                  Ensures the token hasn't been tampered with. Created by encoding the header and payload with a secret key.
+                  Ensures the token hasn't been tampered with. Created by encoding the header and payload with a secret
+                  key.
                 </p>
-                <CodeBlock
-                  code={decoded.signature}
-                  language="text"
-                />
+                <CodeBlock code={decoded.signature} language="text" />
               </div>
             </div>
 
@@ -140,7 +136,8 @@ export default function JwtAnalyzer() {
                   How JWT Works
                 </h3>
                 <p className={styles.explainerText}>
-                  <strong>1. Header:</strong> The header typically consists of two parts: the type of token (JWT) and the signing algorithm (e.g., HMAC SHA256 or RSA).
+                  <strong>1. Header:</strong> The header typically consists of two parts: the type of token (JWT) and
+                  the signing algorithm (e.g., HMAC SHA256 or RSA).
                 </p>
                 <CodeBlock
                   code={`{
@@ -150,7 +147,9 @@ export default function JwtAnalyzer() {
                 />
 
                 <p className={styles.explainerText}>
-                  <strong>2. Payload:</strong> The payload contains the claims. Claims are statements about an entity (typically, the user) and additional metadata. There are three types of claims: registered, public, and private claims.
+                  <strong>2. Payload:</strong> The payload contains the claims. Claims are statements about an entity
+                  (typically, the user) and additional metadata. There are three types of claims: registered, public,
+                  and private claims.
                 </p>
                 <CodeBlock
                   code={`{
@@ -163,7 +162,8 @@ export default function JwtAnalyzer() {
                 />
 
                 <p className={styles.explainerText}>
-                  <strong>3. Signature:</strong> The signature is created by taking the encoded header, encoded payload, a secret key, and the algorithm specified in the header. This ensures the token hasn't been altered.
+                  <strong>3. Signature:</strong> The signature is created by taking the encoded header, encoded payload,
+                  a secret key, and the algorithm specified in the header. This ensures the token hasn't been altered.
                 </p>
                 <CodeBlock
                   code={`// Signature creation algorithm
@@ -181,7 +181,9 @@ const signature = crypto
                 />
 
                 <p className={styles.explainerText}>
-                  <strong>Security Note:</strong> The header and payload are only base64-encoded, not encrypted. Anyone can decode and read them. The signature ensures integrity but not confidentiality. Never store sensitive data like passwords in the payload.
+                  <strong>Security Note:</strong> The header and payload are only base64-encoded, not encrypted. Anyone
+                  can decode and read them. The signature ensures integrity but not confidentiality. Never store
+                  sensitive data like passwords in the payload.
                 </p>
 
                 <CodeBlock

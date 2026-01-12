@@ -29,6 +29,9 @@ import {
   Palette,
 } from "lucide-react";
 import { Navigation } from "~/components/navigation";
+import { KeyboardShortcutsDialog } from "~/components/keyboard-shortcuts-dialog";
+import { useKeyboardShortcuts } from "~/hooks/use-keyboard-shortcuts";
+import { useState } from "react";
 import { Link } from "react-router";
 import { CodeWindow } from "~/components/code-window";
 import styles from "./docs.module.css";
@@ -41,9 +44,14 @@ export function meta() {
 }
 
 export default function Docs() {
+  const [showShortcuts, setShowShortcuts] = useState(false);
+
+  useKeyboardShortcuts(() => setShowShortcuts(true));
+
   return (
     <div className={styles.container}>
-      <Navigation />
+      <KeyboardShortcutsDialog open={showShortcuts} onOpenChange={setShowShortcuts} />
+      <Navigation onShowShortcuts={() => setShowShortcuts(true)} />
 
       <div className={styles.content}>
         <header className={styles.header}>

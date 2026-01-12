@@ -1,7 +1,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  z-index: 5;
+  z-index: 1000;
   background: color-mix(in srgb, var(--color-neutral-1) 80%, transparent);
 }
 
@@ -17,7 +17,7 @@
   position: fixed;
   left: 50%;
   top: 50%;
-  z-index: 5;
+  z-index: 1001;
   display: grid;
   transform: translate(-50%, -50%);
   gap: var(--space-4);

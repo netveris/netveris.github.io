@@ -1,24 +1,21 @@
-import { useState } from 'react';
-import { KeyRound, Download, Copy, Check } from 'lucide-react';
-import { ToolHeader } from '../components/tool-header';
-import { Button } from '../components/ui/button/button';
-import { Card } from '../components/ui/card/card';
-import { Textarea } from '../components/ui/textarea/textarea';
-import { Label } from '../components/ui/label/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select/select';
-import styles from './rsa-generator.module.css';
+import { useState } from "react";
+import { KeyRound, Download, Copy, Check } from "lucide-react";
+import { ToolHeader } from "../components/tool-header";
+import { Button } from "../components/ui/button/button";
+import { Card } from "../components/ui/card/card";
+import { Textarea } from "../components/ui/textarea/textarea";
+import { Label } from "../components/ui/label/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select/select";
+import styles from "./rsa-generator.module.css";
 
 export function meta() {
-  return [
-    { title: "RSA Key Generator - Netveris" },
-    { name: "description", content: "Generate RSA key pairs" },
-  ];
+  return [{ title: "RSA Key Generator - Netveris" }, { name: "description", content: "Generate RSA key pairs" }];
 }
 
 export default function RSAGenerator() {
-  const [keySize, setKeySize] = useState('2048');
-  const [publicKey, setPublicKey] = useState('');
-  const [privateKey, setPrivateKey] = useState('');
+  const [keySize, setKeySize] = useState("2048");
+  const [publicKey, setPublicKey] = useState("");
+  const [privateKey, setPrivateKey] = useState("");
   const [generating, setGenerating] = useState(false);
   const [copiedPublic, setCopiedPublic] = useState(false);
   const [copiedPrivate, setCopiedPrivate] = useState(false);
@@ -28,27 +25,27 @@ export default function RSAGenerator() {
     try {
       const keyPair = await crypto.subtle.generateKey(
         {
-          name: 'RSA-OAEP',
+          name: "RSA-OAEP",
           modulusLength: parseInt(keySize),
           publicExponent: new Uint8Array([1, 0, 1]),
-          hash: 'SHA-256',
+          hash: "SHA-256",
         },
         true,
-        ['encrypt', 'decrypt']
+        ["encrypt", "decrypt"],
       );
 
-      const publicKeyData = await crypto.subtle.exportKey('spki', keyPair.publicKey);
-      const privateKeyData = await crypto.subtle.exportKey('pkcs8', keyPair.privateKey);
+      const publicKeyData = await crypto.subtle.exportKey("spki", keyPair.publicKey);
+      const privateKeyData = await crypto.subtle.exportKey("pkcs8", keyPair.privateKey);
 
-      const publicPem = formatPEM(publicKeyData, 'PUBLIC KEY');
-      const privatePem = formatPEM(privateKeyData, 'PRIVATE KEY');
+      const publicPem = formatPEM(publicKeyData, "PUBLIC KEY");
+      const privatePem = formatPEM(privateKeyData, "PRIVATE KEY");
 
       setPublicKey(publicPem);
       setPrivateKey(privatePem);
     } catch (error) {
-      console.error('Key generation failed:', error);
-      setPublicKey('Error generating keys');
-      setPrivateKey('Error generating keys');
+      console.error("Key generation failed:", error);
+      setPublicKey("Error generating keys");
+      setPrivateKey("Error generating keys");
     } finally {
       setGenerating(false);
     }
@@ -56,7 +53,7 @@ export default function RSAGenerator() {
 
   const formatPEM = (keyData: ArrayBuffer, type: string): string => {
     const base64 = btoa(String.fromCharCode(...new Uint8Array(keyData)));
-    const formatted = base64.match(/.{1,64}/g)?.join('\n') || base64;
+    const formatted = base64.match(/.{1,64}/g)?.join("\n") || base64;
     return `-----BEGIN ${type}-----\n${formatted}\n-----END ${type}-----`;
   };
 
@@ -73,12 +70,9 @@ export default function RSAGenerator() {
   };
 
   const downloadKeys = () => {
-    const blob = new Blob(
-      [`${publicKey}\n\n${privateKey}`],
-      { type: 'text/plain' }
-    );
+    const blob = new Blob([`${publicKey}\n\n${privateKey}`], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
     a.download = `rsa_${keySize}_keypair.pem`;
     a.click();
@@ -113,7 +107,7 @@ export default function RSAGenerator() {
 
             <Button onClick={generateKeyPair} disabled={generating} className={styles.generateButton}>
               <KeyRound size={18} />
-              {generating ? 'Generating Keys...' : 'Generate Key Pair'}
+              {generating ? "Generating Keys..." : "Generate Key Pair"}
             </Button>
 
             {publicKey && privateKey && (
@@ -136,15 +130,10 @@ export default function RSAGenerator() {
               </div>
               <Button onClick={copyPublicKey} variant="ghost" size="sm">
                 {copiedPublic ? <Check size={16} /> : <Copy size={16} />}
-                {copiedPublic ? 'Copied!' : 'Copy'}
+                {copiedPublic ? "Copied!" : "Copy"}
               </Button>
             </div>
-            <Textarea
-              value={publicKey}
-              readOnly
-              rows={10}
-              className={styles.keyOutput}
-            />
+            <Textarea value={publicKey} readOnly rows={10} className={styles.keyOutput} />
           </Card>
         )}
 
@@ -157,15 +146,10 @@ export default function RSAGenerator() {
               </div>
               <Button onClick={copyPrivateKey} variant="ghost" size="sm">
                 {copiedPrivate ? <Check size={16} /> : <Copy size={16} />}
-                {copiedPrivate ? 'Copied!' : 'Copy'}
+                {copiedPrivate ? "Copied!" : "Copy"}
               </Button>
             </div>
-            <Textarea
-              value={privateKey}
-              readOnly
-              rows={16}
-              className={styles.keyOutput}
-            />
+            <Textarea value={privateKey} readOnly rows={16} className={styles.keyOutput} />
           </Card>
         )}
       </div>

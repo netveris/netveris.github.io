@@ -22,19 +22,19 @@ function formatShortcut(shortcut: (typeof KEYBOARD_SHORTCUTS)[0]): string[] {
 const groupedShortcuts = [
   {
     title: "Navigation",
-    shortcuts: KEYBOARD_SHORTCUTS.filter((s) => !s.alt && s.action !== "shortcuts"),
+    shortcuts: KEYBOARD_SHORTCUTS.filter((s) => s.ctrl && !s.alt),
   },
   {
     title: "Security Tools",
-    shortcuts: KEYBOARD_SHORTCUTS.filter((s) => s.alt && /^[1-4]$/.test(s.key)),
+    shortcuts: KEYBOARD_SHORTCUTS.filter((s) => s.alt && !s.ctrl && /^[1-4]$/.test(s.key)),
   },
   {
     title: "Encryption Tools",
-    shortcuts: KEYBOARD_SHORTCUTS.filter((s) => s.alt && /^[5-7]$/.test(s.key)),
+    shortcuts: KEYBOARD_SHORTCUTS.filter((s) => s.alt && !s.ctrl && /^[5-7]$/.test(s.key)),
   },
   {
     title: "Analysis Tools",
-    shortcuts: KEYBOARD_SHORTCUTS.filter((s) => s.alt && /^[890]$/.test(s.key)),
+    shortcuts: KEYBOARD_SHORTCUTS.filter((s) => s.alt && !s.ctrl && /^[890]$/.test(s.key)),
   },
   {
     title: "Utility Tools",

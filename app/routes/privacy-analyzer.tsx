@@ -43,27 +43,27 @@ export default function PrivacyAnalyzer() {
       // Try to fetch the page
       try {
         const response = await fetch(url, {
-          method: 'GET',
-          mode: 'cors',
+          method: "GET",
+          mode: "cors",
         });
 
         // Analyze cookies
         const cookieIssues: string[] = [];
-        const setCookie = response.headers.get('set-cookie');
+        const setCookie = response.headers.get("set-cookie");
         if (setCookie) {
-          const cookieCount = setCookie.split(',').length;
+          const cookieCount = setCookie.split(",").length;
           cookieIssues.push(`${cookieCount} cookies set by server`);
-          
-          if (!setCookie.toLowerCase().includes('secure')) {
-            cookieIssues.push('Some cookies missing Secure flag');
+
+          if (!setCookie.toLowerCase().includes("secure")) {
+            cookieIssues.push("Some cookies missing Secure flag");
             privacyScore -= 10;
           }
-          if (!setCookie.toLowerCase().includes('samesite')) {
-            cookieIssues.push('Some cookies missing SameSite attribute');
+          if (!setCookie.toLowerCase().includes("samesite")) {
+            cookieIssues.push("Some cookies missing SameSite attribute");
             privacyScore -= 10;
           }
-          if (!setCookie.toLowerCase().includes('httponly')) {
-            cookieIssues.push('Some cookies missing HttpOnly flag');
+          if (!setCookie.toLowerCase().includes("httponly")) {
+            cookieIssues.push("Some cookies missing HttpOnly flag");
             privacyScore -= 10;
           }
         }
@@ -78,19 +78,19 @@ export default function PrivacyAnalyzer() {
 
         // Check privacy headers
         const privacyHeaders: string[] = [];
-        const referrerPolicy = response.headers.get('referrer-policy');
+        const referrerPolicy = response.headers.get("referrer-policy");
         if (referrerPolicy) {
           privacyHeaders.push(`Referrer-Policy: ${referrerPolicy}`);
         } else {
-          privacyHeaders.push('Missing Referrer-Policy header');
+          privacyHeaders.push("Missing Referrer-Policy header");
           privacyScore -= 5;
         }
 
-        const permissionsPolicy = response.headers.get('permissions-policy');
+        const permissionsPolicy = response.headers.get("permissions-policy");
         if (permissionsPolicy) {
           privacyHeaders.push(`Permissions-Policy configured`);
         } else {
-          privacyHeaders.push('Missing Permissions-Policy header');
+          privacyHeaders.push("Missing Permissions-Policy header");
           privacyScore -= 5;
         }
 
@@ -105,16 +105,16 @@ export default function PrivacyAnalyzer() {
         // Check third-party resources
         const html = await response.text();
         const thirdPartyItems: string[] = [];
-        
+
         // Check for common trackers
         const trackers = [
-          { name: 'Google Analytics', pattern: /google-analytics\.com|googletagmanager\.com/i },
-          { name: 'Facebook Pixel', pattern: /connect\.facebook\.net/i },
-          { name: 'Twitter', pattern: /platform\.twitter\.com/i },
-          { name: 'LinkedIn', pattern: /platform\.linkedin\.com/i },
+          { name: "Google Analytics", pattern: /google-analytics\.com|googletagmanager\.com/i },
+          { name: "Facebook Pixel", pattern: /connect\.facebook\.net/i },
+          { name: "Twitter", pattern: /platform\.twitter\.com/i },
+          { name: "LinkedIn", pattern: /platform\.linkedin\.com/i },
         ];
 
-        trackers.forEach(tracker => {
+        trackers.forEach((tracker) => {
           if (tracker.pattern.test(html)) {
             thirdPartyItems.push(`${tracker.name} detected`);
             privacyScore -= 15;
@@ -132,16 +132,16 @@ export default function PrivacyAnalyzer() {
         // Check for privacy policy
         const complianceItems: string[] = [];
         if (/privacy[\s-]?policy/i.test(html)) {
-          complianceItems.push('Privacy policy link found');
+          complianceItems.push("Privacy policy link found");
         } else {
-          complianceItems.push('No privacy policy link detected');
+          complianceItems.push("No privacy policy link detected");
           privacyScore -= 10;
         }
 
         if (/cookie[\s-]?consent|gdpr/i.test(html)) {
-          complianceItems.push('Cookie consent/GDPR indicators present');
+          complianceItems.push("Cookie consent/GDPR indicators present");
         } else {
-          complianceItems.push('No cookie consent banner detected');
+          complianceItems.push("No cookie consent banner detected");
           privacyScore -= 10;
         }
 
@@ -150,16 +150,15 @@ export default function PrivacyAnalyzer() {
           severity: "low",
           items: complianceItems,
         });
-
       } catch (fetchError) {
         // CORS or network error - provide limited analysis
         analysisResults.push({
           category: "Analysis Limitation",
           severity: "medium",
           items: [
-            'Unable to fetch full page content (CORS restriction)',
-            'Limited privacy analysis available',
-            'For full analysis, use browser developer tools',
+            "Unable to fetch full page content (CORS restriction)",
+            "Limited privacy analysis available",
+            "For full analysis, use browser developer tools",
           ],
         });
         privacyScore = 50;
@@ -169,11 +168,13 @@ export default function PrivacyAnalyzer() {
       setScore(Math.max(0, Math.min(100, privacyScore)));
     } catch (err) {
       console.error(err);
-      setResults([{
-        category: "Error",
-        severity: "high",
-        items: ['Failed to analyze URL. Please check the URL and try again.'],
-      }]);
+      setResults([
+        {
+          category: "Error",
+          severity: "high",
+          items: ["Failed to analyze URL. Please check the URL and try again."],
+        },
+      ]);
       setScore(0);
     } finally {
       setLoading(false);

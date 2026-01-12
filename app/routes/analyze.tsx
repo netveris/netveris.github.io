@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { ToolHeader } from '../components/tool-header';
-import { AnalysisPanel } from '../components/analysis-panel';
-import { SecurityScore } from '../components/security-score';
-import { Button } from '../components/ui/button/button';
-import { Input } from '../components/ui/input/input';
-import { Shield, Play, Download, AlertTriangle, Globe } from 'lucide-react';
-import { analyzeSiteSecurity, type SecurityAnalysisResult } from '../utils/security-analyzer';
-import { exportAsJSON, exportAsText } from '../utils/export';
-import { addToHistory } from '../utils/storage';
-import styles from './analyze.module.css';
+import { useState } from "react";
+import { ToolHeader } from "../components/tool-header";
+import { AnalysisPanel } from "../components/analysis-panel";
+import { SecurityScore } from "../components/security-score";
+import { Button } from "../components/ui/button/button";
+import { Input } from "../components/ui/input/input";
+import { Shield, Play, Download, AlertTriangle, Globe } from "lucide-react";
+import { analyzeSiteSecurity, type SecurityAnalysisResult } from "../utils/security-analyzer";
+import { exportAsJSON, exportAsText } from "../utils/export";
+import { addToHistory } from "../utils/storage";
+import styles from "./analyze.module.css";
 
 export function meta() {
   return [
@@ -18,41 +18,41 @@ export function meta() {
 }
 
 export default function SecurityAnalyzer() {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState("");
   const [analysisResult, setAnalysisResult] = useState<SecurityAnalysisResult | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const runAnalysis = async () => {
-    setError('');
-    
+    setError("");
+
     if (!url) {
-      setError('Please enter a URL to analyze');
+      setError("Please enter a URL to analyze");
       return;
     }
 
     try {
       new URL(url);
     } catch {
-      setError('Please enter a valid URL (including http:// or https://)');
+      setError("Please enter a valid URL (including http:// or https://)");
       return;
     }
 
     setIsAnalyzing(true);
-    
+
     // Simulate network analysis time
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     const result = analyzeSiteSecurity(url);
     setAnalysisResult(result);
     setIsAnalyzing(false);
-    addToHistory('/analyze', 'Full Security Audit', { url, score: result.overallScore });
+    addToHistory("/analyze", "Full Security Audit", { url, score: result.overallScore });
   };
 
   const handleExportJSON = () => {
     if (!analysisResult || !url) return;
     exportAsJSON({
-      toolName: 'security-audit',
+      toolName: "security-audit",
       timestamp: new Date().toISOString(),
       results: {
         url,
@@ -61,33 +61,33 @@ export default function SecurityAnalyzer() {
         summary: analysisResult.summary,
         categories: analysisResult.categories,
         issues: analysisResult.issues,
-        recommendations: analysisResult.recommendations
-      }
+        recommendations: analysisResult.recommendations,
+      },
     });
   };
 
   const handleExportText = () => {
     if (!analysisResult || !url) return;
     exportAsText({
-      toolName: 'security-audit',
+      toolName: "security-audit",
       timestamp: new Date().toISOString(),
       results: {
         url,
         score: `${analysisResult.overallScore}/100 (${analysisResult.grade})`,
         summary: analysisResult.summary,
-        issues: analysisResult.issues.map(i => ({
+        issues: analysisResult.issues.map((i) => ({
           severity: i.severity,
           title: i.title,
           description: i.description,
-          location: i.location || 'N/A',
-          fix: i.recommendation
+          location: i.location || "N/A",
+          fix: i.recommendation,
         })),
-        recommendations: analysisResult.recommendations.map(r => ({
+        recommendations: analysisResult.recommendations.map((r) => ({
           title: r.title,
           description: r.description,
-          recommendation: r.recommendation
-        }))
-      }
+          recommendation: r.recommendation,
+        })),
+      },
     });
   };
 
@@ -112,13 +112,9 @@ export default function SecurityAnalyzer() {
               disabled={isAnalyzing}
             />
           </div>
-          <Button
-            onClick={runAnalysis}
-            disabled={isAnalyzing || !url}
-            className={styles.analyzeButton}
-          >
+          <Button onClick={runAnalysis} disabled={isAnalyzing || !url} className={styles.analyzeButton}>
             <Play size={18} />
-            {isAnalyzing ? 'Scanning...' : 'Analyze'}
+            {isAnalyzing ? "Scanning..." : "Analyze"}
           </Button>
         </div>
 
@@ -164,9 +160,7 @@ export default function SecurityAnalyzer() {
                   <div key={category.name} className={styles.categoryCard}>
                     <div className={styles.categoryHeader}>
                       <h3>{category.name}</h3>
-                      <span className={`${styles.categoryScore} ${styles[category.status]}`}>
-                        {category.score}/100
-                      </span>
+                      <span className={`${styles.categoryScore} ${styles[category.status]}`}>{category.score}/100</span>
                     </div>
                     <p className={styles.categoryDescription}>{category.description}</p>
                     <div className={styles.categoryStats}>
@@ -178,17 +172,9 @@ export default function SecurityAnalyzer() {
               </div>
             </div>
 
-            <AnalysisPanel
-              title="Security Issues Found"
-              issues={analysisResult.issues}
-              defaultExpanded={true}
-            />
+            <AnalysisPanel title="Security Issues Found" issues={analysisResult.issues} defaultExpanded={true} />
 
-            <AnalysisPanel
-              title="Recommendations"
-              issues={analysisResult.recommendations}
-              defaultExpanded={false}
-            />
+            <AnalysisPanel title="Recommendations" issues={analysisResult.recommendations} defaultExpanded={false} />
 
             {analysisResult.criticalCount > 0 && (
               <div className={styles.criticalAlert}>
@@ -196,8 +182,8 @@ export default function SecurityAnalyzer() {
                 <div>
                   <h3>Critical Issues Detected</h3>
                   <p>
-                    {analysisResult.criticalCount} critical security {analysisResult.criticalCount === 1 ? 'issue' : 'issues'} found. 
-                    Immediate action recommended.
+                    {analysisResult.criticalCount} critical security{" "}
+                    {analysisResult.criticalCount === 1 ? "issue" : "issues"} found. Immediate action recommended.
                   </p>
                 </div>
               </div>

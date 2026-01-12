@@ -1,21 +1,19 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
-import { 
-  BarChart3, 
-  Clock, 
-  Star, 
-  TrendingUp,
-  History,
-  Trash2,
-  Heart,
-  Activity
-} from 'lucide-react';
-import { Navigation } from '~/components/navigation';
-import { KeyboardShortcutsDialog } from '~/components/keyboard-shortcuts-dialog';
-import { getHistory, getFavorites, clearHistory, clearFavorites, type ToolHistory, type Favorite } from '~/utils/storage';
-import { Button } from '~/components/ui/button/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card/card';
-import styles from './dashboard.module.css';
+import { useEffect, useState } from "react";
+import { Link } from "react-router";
+import { BarChart3, Clock, Star, TrendingUp, History, Trash2, Heart, Activity } from "lucide-react";
+import { Navigation } from "~/components/navigation";
+import { KeyboardShortcutsDialog } from "~/components/keyboard-shortcuts-dialog";
+import {
+  getHistory,
+  getFavorites,
+  clearHistory,
+  clearFavorites,
+  type ToolHistory,
+  type Favorite,
+} from "~/utils/storage";
+import { Button } from "~/components/ui/button/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card/card";
+import styles from "./dashboard.module.css";
 
 export function meta() {
   return [
@@ -35,14 +33,14 @@ export default function Dashboard() {
   }, []);
 
   const handleClearHistory = () => {
-    if (confirm('Are you sure you want to clear all history?')) {
+    if (confirm("Are you sure you want to clear all history?")) {
       clearHistory();
       setHistory([]);
     }
   };
 
   const handleClearFavorites = () => {
-    if (confirm('Are you sure you want to clear all favorites?')) {
+    if (confirm("Are you sure you want to clear all favorites?")) {
       clearFavorites();
       setFavorites([]);
     }
@@ -56,7 +54,7 @@ export default function Dashboard() {
     const hours = Math.floor(diff / 3600000);
     const days = Math.floor(diff / 86400000);
 
-    if (minutes < 1) return 'Just now';
+    if (minutes < 1) return "Just now";
     if (minutes < 60) return `${minutes}m ago`;
     if (hours < 24) return `${hours}h ago`;
     return `${days}d ago`;
@@ -66,7 +64,7 @@ export default function Dashboard() {
     <div className={styles.container}>
       <KeyboardShortcutsDialog open={showShortcuts} onOpenChange={setShowShortcuts} />
       <Navigation onShowShortcuts={() => setShowShortcuts(true)} />
-      
+
       <header className={styles.header}>
         <div className={styles.headerContent}>
           <div className={styles.headerTitle}>
@@ -117,7 +115,7 @@ export default function Dashboard() {
             </CardHeader>
             <CardContent>
               <div className={styles.statValue}>
-                {history.length > 0 ? formatTime(history[0].timestamp) : 'No activity'}
+                {history.length > 0 ? formatTime(history[0].timestamp) : "No activity"}
               </div>
               <CardDescription>Last tool used</CardDescription>
             </CardContent>
@@ -133,12 +131,7 @@ export default function Dashboard() {
                 <CardTitle>Favorite Tools</CardTitle>
               </div>
               {favorites.length > 0 && (
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  onClick={handleClearFavorites}
-                  className={styles.clearButton}
-                >
+                <Button variant="ghost" size="sm" onClick={handleClearFavorites} className={styles.clearButton}>
                   <Trash2 size={16} />
                   Clear All
                 </Button>
@@ -151,9 +144,7 @@ export default function Dashboard() {
               <div className={styles.emptyState}>
                 <Star size={48} className={styles.emptyIcon} />
                 <p className={styles.emptyText}>No favorite tools yet</p>
-                <p className={styles.emptySubtext}>
-                  Star your favorite tools for quick access
-                </p>
+                <p className={styles.emptySubtext}>Star your favorite tools for quick access</p>
               </div>
             ) : (
               <div className={styles.itemGrid}>
@@ -182,12 +173,7 @@ export default function Dashboard() {
                 <CardTitle>Recent History</CardTitle>
               </div>
               {history.length > 0 && (
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  onClick={handleClearHistory}
-                  className={styles.clearButton}
-                >
+                <Button variant="ghost" size="sm" onClick={handleClearHistory} className={styles.clearButton}>
                   <Trash2 size={16} />
                   Clear All
                 </Button>
@@ -200,9 +186,7 @@ export default function Dashboard() {
               <div className={styles.emptyState}>
                 <Clock size={48} className={styles.emptyIcon} />
                 <p className={styles.emptyText}>No history yet</p>
-                <p className={styles.emptySubtext}>
-                  Start using security tools to see your activity here
-                </p>
+                <p className={styles.emptySubtext}>Start using security tools to see your activity here</p>
               </div>
             ) : (
               <div className={styles.historyList}>

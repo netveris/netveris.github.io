@@ -9,10 +9,7 @@ import { Card } from "~/components/ui/card/card";
 import styles from "./regex-tester.module.css";
 
 export function meta() {
-  return [
-    { title: "Regex Tester - Netveris" },
-    { name: "description", content: "Test and debug regular expressions" },
-  ];
+  return [{ title: "Regex Tester - Netveris" }, { name: "description", content: "Test and debug regular expressions" }];
 }
 
 export default function RegexTester() {

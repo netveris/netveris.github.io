@@ -7,10 +7,7 @@ import { Fingerprint, Search, Copy, Check, Trash2, AlertCircle, CheckCircle } fr
 import styles from "./hash-identifier.module.css";
 
 export function meta() {
-  return [
-    { title: "Hash Identifier - Netveris" },
-    { name: "description", content: "Identify unknown hash types" },
-  ];
+  return [{ title: "Hash Identifier - Netveris" }, { name: "description", content: "Identify unknown hash types" }];
 }
 
 interface HashPattern {

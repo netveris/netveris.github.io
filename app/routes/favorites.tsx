@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import { Star, ArrowRight, Shield } from "lucide-react";
 import { Navigation } from "~/components/navigation";
+import { KeyboardShortcutsDialog } from "~/components/keyboard-shortcuts-dialog";
+import { useKeyboardShortcuts } from "~/hooks/use-keyboard-shortcuts";
 import { useState, useEffect } from "react";
 import { getFavorites, toggleFavorite } from "~/utils/storage";
 import styles from "./favorites.module.css";
@@ -16,112 +18,115 @@ const TOOL_INFO: Record<string, { icon: React.ReactElement; title: string; descr
   "/analyze": {
     icon: <Shield size={32} />,
     title: "Site Security Analyzer",
-    description: "Comprehensive security audit of the entire application"
+    description: "Comprehensive security audit of the entire application",
   },
   "/jwt-debugger": {
     icon: <Shield size={32} />,
     title: "JWT Debugger",
-    description: "Debug and validate JWT tokens with real-time feedback"
+    description: "Debug and validate JWT tokens with real-time feedback",
   },
   "/password-checker": {
     icon: <Shield size={32} />,
     title: "Password Strength",
-    description: "Analyze password strength with entropy calculation"
+    description: "Analyze password strength with entropy calculation",
   },
   "/hash-tools": {
     icon: <Shield size={32} />,
     title: "Hash Tools",
-    description: "Generate cryptographic hashes"
+    description: "Generate cryptographic hashes",
   },
   "/base64-tools": {
     icon: <Shield size={32} />,
     title: "Base64 Tools",
-    description: "Encode and decode Base64 strings"
+    description: "Encode and decode Base64 strings",
   },
   "/aes-encryption": {
     icon: <Shield size={32} />,
     title: "AES Encryption",
-    description: "Encrypt and decrypt text using AES-256-GCM"
+    description: "Encrypt and decrypt text using AES-256-GCM",
   },
   "/rsa-generator": {
     icon: <Shield size={32} />,
     title: "RSA Key Generator",
-    description: "Generate RSA public/private key pairs"
+    description: "Generate RSA public/private key pairs",
   },
   "/ssl-inspector": {
     icon: <Shield size={32} />,
     title: "SSL/TLS Inspector",
-    description: "Analyze SSL/TLS certificates and protocols"
+    description: "Analyze SSL/TLS certificates and protocols",
   },
   "/cors-checker": {
     icon: <Shield size={32} />,
     title: "CORS Checker",
-    description: "Analyze CORS configuration"
+    description: "Analyze CORS configuration",
   },
   "/http-builder": {
     icon: <Shield size={32} />,
     title: "HTTP Request Builder",
-    description: "Build and test HTTP requests"
+    description: "Build and test HTTP requests",
   },
   "/data-sanitizer": {
     icon: <Shield size={32} />,
     title: "Data Sanitizer",
-    description: "Sanitize and validate user input"
+    description: "Sanitize and validate user input",
   },
   "/api-security": {
     icon: <Shield size={32} />,
     title: "API Security Tester",
-    description: "Test API endpoints for vulnerabilities"
+    description: "Test API endpoints for vulnerabilities",
   },
   "/privacy-analyzer": {
     icon: <Shield size={32} />,
     title: "Privacy Analyzer",
-    description: "Analyze tracking scripts and privacy compliance"
+    description: "Analyze tracking scripts and privacy compliance",
   },
   "/certificate-decoder": {
     icon: <Shield size={32} />,
     title: "Certificate Decoder",
-    description: "Decode and analyze X.509 SSL/TLS certificates"
+    description: "Decode and analyze X.509 SSL/TLS certificates",
   },
   "/subnet-calculator": {
     icon: <Shield size={32} />,
     title: "Subnet Calculator",
-    description: "Calculate IP subnet information"
+    description: "Calculate IP subnet information",
   },
   "/regex-tester": {
     icon: <Shield size={32} />,
     title: "Regex Tester",
-    description: "Test and validate regular expressions"
+    description: "Test and validate regular expressions",
   },
   "/dns-lookup": {
     icon: <Shield size={32} />,
     title: "DNS Lookup",
-    description: "Query and analyze DNS records"
+    description: "Query and analyze DNS records",
   },
   "/url-parser": {
     icon: <Shield size={32} />,
     title: "URL Parser",
-    description: "Parse and analyze URL components"
+    description: "Parse and analyze URL components",
   },
   "/uuid-generator": {
     icon: <Shield size={32} />,
     title: "UUID Generator",
-    description: "Generate universally unique identifiers"
+    description: "Generate universally unique identifiers",
   },
   "/text-diff": {
     icon: <Shield size={32} />,
     title: "Text Diff Tool",
-    description: "Compare two texts side-by-side"
+    description: "Compare two texts side-by-side",
   },
   "/jwt-best-practices": {
     icon: <Shield size={32} />,
     title: "JWT Best Practices",
-    description: "Learn JWT security best practices"
+    description: "Learn JWT security best practices",
   },
 };
 
 export default function Favorites() {
   const [favorites, setFavorites] = useState<Array<{ toolPath: string; toolTitle: string; timestamp: number }>>([]);
+  const [showShortcuts, setShowShortcuts] = useState(false);
+
+  useKeyboardShortcuts(() => setShowShortcuts(true));
 
   useEffect(() => {
     setFavorites(getFavorites());
@@ -136,7 +141,8 @@ export default function Favorites() {
 
   return (
     <div className={styles.container}>
-      <Navigation />
+      <KeyboardShortcutsDialog open={showShortcuts} onOpenChange={setShowShortcuts} />
+      <Navigation onShowShortcuts={() => setShowShortcuts(true)} />
 
       <div className={styles.content}>
         <header className={styles.header}>
@@ -144,9 +150,7 @@ export default function Favorites() {
             <Star size={48} />
           </div>
           <h1 className={styles.title}>Favorite Tools</h1>
-          <p className={styles.subtitle}>
-            Quick access to your most-used security tools
-          </p>
+          <p className={styles.subtitle}>Quick access to your most-used security tools</p>
         </header>
 
         {favorites.length === 0 ? (
@@ -165,7 +169,7 @@ export default function Favorites() {
             {favorites.map((fav) => {
               const tool = TOOL_INFO[fav.toolPath];
               if (!tool) return null;
-              
+
               return (
                 <div key={fav.toolPath} className={styles.card}>
                   <button

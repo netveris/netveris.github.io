@@ -49,29 +49,31 @@ export default function APISecurityTester() {
       testResults.push({
         name: "API Versioning",
         status: endpoint.includes("/v1") || endpoint.includes("/v2") || endpoint.includes("/v3") ? "passed" : "warning",
-        message: endpoint.includes("/v") && /\/v\d/.test(endpoint)
-          ? "API versioning detected in URL"
-          : "Consider implementing API versioning (/v1, /v2, etc.)",
+        message:
+          endpoint.includes("/v") && /\/v\d/.test(endpoint)
+            ? "API versioning detected in URL"
+            : "Consider implementing API versioning (/v1, /v2, etc.)",
       });
 
       // Try to make actual request to check headers
       try {
         const response = await fetch(endpoint, {
-          method: 'OPTIONS',
+          method: "OPTIONS",
           headers: {
-            'Origin': window.location.origin,
+            Origin: window.location.origin,
           },
         });
 
         // Test 3: CORS Configuration
-        const corsOrigin = response.headers.get('access-control-allow-origin');
+        const corsOrigin = response.headers.get("access-control-allow-origin");
         if (corsOrigin) {
           testResults.push({
             name: "CORS Configuration",
-            status: corsOrigin === '*' ? "warning" : "passed",
-            message: corsOrigin === '*'
-              ? "CORS allows all origins (*) - consider restricting to specific domains"
-              : `CORS properly configured for: ${corsOrigin}`,
+            status: corsOrigin === "*" ? "warning" : "passed",
+            message:
+              corsOrigin === "*"
+                ? "CORS allows all origins (*) - consider restricting to specific domains"
+                : `CORS properly configured for: ${corsOrigin}`,
           });
         } else {
           testResults.push({
@@ -82,7 +84,7 @@ export default function APISecurityTester() {
         }
 
         // Test 4: Security Headers
-        const csp = response.headers.get('content-security-policy');
+        const csp = response.headers.get("content-security-policy");
         testResults.push({
           name: "Content Security Policy",
           status: csp ? "passed" : "warning",
@@ -92,7 +94,7 @@ export default function APISecurityTester() {
         });
 
         // Test 5: Rate Limiting
-        const rateLimit = response.headers.get('x-ratelimit-limit') || response.headers.get('ratelimit-limit');
+        const rateLimit = response.headers.get("x-ratelimit-limit") || response.headers.get("ratelimit-limit");
         testResults.push({
           name: "Rate Limiting",
           status: rateLimit ? "passed" : "warning",
@@ -102,15 +104,15 @@ export default function APISecurityTester() {
         });
 
         // Test 6: Authentication indicators
-        const wwwAuth = response.headers.get('www-authenticate');
+        const wwwAuth = response.headers.get("www-authenticate");
         testResults.push({
           name: "Authentication",
           status: wwwAuth || response.status === 401 ? "passed" : "warning",
-          message: wwwAuth || response.status === 401
-            ? "Endpoint appears to require authentication"
-            : "No authentication indicators detected",
+          message:
+            wwwAuth || response.status === 401
+              ? "Endpoint appears to require authentication"
+              : "No authentication indicators detected",
         });
-
       } catch (fetchError) {
         // If fetch fails, add warnings
         testResults.push({
@@ -141,9 +143,9 @@ export default function APISecurityTester() {
     }
   };
 
-  const passedCount = results.filter(r => r.status === "passed").length;
-  const failedCount = results.filter(r => r.status === "failed").length;
-  const warningCount = results.filter(r => r.status === "warning").length;
+  const passedCount = results.filter((r) => r.status === "passed").length;
+  const failedCount = results.filter((r) => r.status === "failed").length;
+  const warningCount = results.filter((r) => r.status === "warning").length;
 
   return (
     <div className={styles.container}>

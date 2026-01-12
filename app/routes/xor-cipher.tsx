@@ -12,10 +12,7 @@ type InputFormat = "text" | "hex" | "base64";
 type KeyFormat = "text" | "hex" | "single-byte";
 
 export function meta() {
-  return [
-    { title: "XOR Cipher - Netveris" },
-    { name: "description", content: "XOR encryption and decryption tool" },
-  ];
+  return [{ title: "XOR Cipher - Netveris" }, { name: "description", content: "XOR encryption and decryption tool" }];
 }
 
 export default function XorCipher() {
