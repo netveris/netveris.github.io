@@ -8,6 +8,13 @@ import { Badge } from "~/components/ui/badge/badge";
 import { Card } from "~/components/ui/card/card";
 import styles from "./regex-tester.module.css";
 
+export function meta() {
+  return [
+    { title: "Regex Tester - Netveris" },
+    { name: "description", content: "Test and debug regular expressions" },
+  ];
+}
+
 export default function RegexTester() {
   const [pattern, setPattern] = useState("\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}\\b");
   const [flags, setFlags] = useState("gi");

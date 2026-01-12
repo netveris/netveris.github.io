@@ -8,6 +8,13 @@ import { Input } from "~/components/ui/input/input";
 import { Card } from "~/components/ui/card/card";
 import styles from "./privacy-analyzer.module.css";
 
+export function meta() {
+  return [
+    { title: "Privacy Analyzer - Netveris" },
+    { name: "description", content: "Analyze website privacy and tracking concerns" },
+  ];
+}
+
 interface PrivacyIssue {
   category: string;
   severity: "low" | "medium" | "high";

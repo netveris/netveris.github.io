@@ -10,6 +10,13 @@ import { Card } from "~/components/ui/card/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs/tabs";
 import styles from "./data-sanitizer.module.css";
 
+export function meta() {
+  return [
+    { title: "Data Sanitizer - Netveris" },
+    { name: "description", content: "Sanitize and clean user input data" },
+  ];
+}
+
 export default function DataSanitizer() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");

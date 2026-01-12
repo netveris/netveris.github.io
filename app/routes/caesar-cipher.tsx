@@ -7,6 +7,13 @@ import { Slider } from "~/components/ui/slider/slider";
 import { RotateCcw, Copy, Check, ArrowRightLeft, Trash2, Zap } from "lucide-react";
 import styles from "./caesar-cipher.module.css";
 
+export function meta() {
+  return [
+    { title: "Caesar Cipher - Netveris" },
+    { name: "description", content: "Encrypt and decrypt with Caesar cipher" },
+  ];
+}
+
 export default function CaesarCipher() {
   const [input, setInput] = useState("");
   const [shift, setShift] = useState(13); // Default ROT13

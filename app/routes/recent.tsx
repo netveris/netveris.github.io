@@ -5,6 +5,13 @@ import { useState, useEffect } from "react";
 import { getHistory, clearHistory } from "~/utils/storage";
 import styles from "./recent.module.css";
 
+export function meta() {
+  return [
+    { title: "Recent Tools - Netveris" },
+    { name: "description", content: "Your recently used security tools" },
+  ];
+}
+
 const TOOL_INFO: Record<string, { icon: React.ReactElement; title: string; description: string }> = {
   "/analyze": {
     icon: <Shield size={32} />,

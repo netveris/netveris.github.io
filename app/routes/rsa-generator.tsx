@@ -8,6 +8,13 @@ import { Label } from '../components/ui/label/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select/select';
 import styles from './rsa-generator.module.css';
 
+export function meta() {
+  return [
+    { title: "RSA Key Generator - Netveris" },
+    { name: "description", content: "Generate RSA key pairs" },
+  ];
+}
+
 export default function RSAGenerator() {
   const [keySize, setKeySize] = useState('2048');
   const [publicKey, setPublicKey] = useState('');

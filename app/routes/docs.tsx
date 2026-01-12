@@ -33,6 +33,13 @@ import { Link } from "react-router";
 import { CodeWindow } from "~/components/code-window";
 import styles from "./docs.module.css";
 
+export function meta() {
+  return [
+    { title: "Documentation - Netveris" },
+    { name: "description", content: "Complete guide to Netveris security tools" },
+  ];
+}
+
 export default function Docs() {
   return (
     <div className={styles.container}>

@@ -17,6 +17,13 @@ import { Button } from '~/components/ui/button/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card/card';
 import styles from './dashboard.module.css';
 
+export function meta() {
+  return [
+    { title: "Dashboard - Netveris" },
+    { name: "description", content: "Your security tools dashboard with usage stats and quick access" },
+  ];
+}
+
 export default function Dashboard() {
   const [history, setHistory] = useState<ToolHistory[]>([]);
   const [favorites, setFavorites] = useState<Favorite[]>([]);

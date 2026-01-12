@@ -7,6 +7,13 @@ import { decodeJWT } from "../utils/jwt-decoder";
 import { ThemeToggle } from "~/components/theme-toggle";
 import styles from "./jwt-analyzer.module.css";
 
+export function meta() {
+  return [
+    { title: "JWT Analyzer - Netveris" },
+    { name: "description", content: "Analyze and decode JWT tokens" },
+  ];
+}
+
 export default function JwtAnalyzer() {
   const [token, setToken] = useState("");
   const [decoded, setDecoded] = useState<ReturnType<typeof decodeJWT> | null>(null);

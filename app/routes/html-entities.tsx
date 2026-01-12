@@ -7,6 +7,13 @@ import { Switch } from "~/components/ui/switch/switch";
 import { Code, ArrowRightLeft, Copy, Check, Trash2, Info, ShieldCheck } from "lucide-react";
 import styles from "./html-entities.module.css";
 
+export function meta() {
+  return [
+    { title: "HTML Entities - Netveris" },
+    { name: "description", content: "Encode and decode HTML entities" },
+  ];
+}
+
 type Mode = "encode" | "decode";
 
 interface EntityRef {

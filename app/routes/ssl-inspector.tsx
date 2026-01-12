@@ -10,6 +10,13 @@ import { Alert, AlertDescription } from "~/components/ui/alert/alert";
 import styles from "./ssl-inspector.module.css";
 import type { Route } from "./+types/ssl-inspector";
 
+export function meta() {
+  return [
+    { title: "SSL Inspector - Netveris" },
+    { name: "description", content: "Inspect SSL/TLS certificates and security configuration" },
+  ];
+}
+
 interface SSLInfo {
   domain: string;
   valid: boolean;

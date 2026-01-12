@@ -6,6 +6,13 @@ import { Badge } from "~/components/ui/badge/badge";
 import { Fingerprint, Search, Copy, Check, Trash2, AlertCircle, CheckCircle } from "lucide-react";
 import styles from "./hash-identifier.module.css";
 
+export function meta() {
+  return [
+    { title: "Hash Identifier - Netveris" },
+    { name: "description", content: "Identify unknown hash types" },
+  ];
+}
+
 interface HashPattern {
   name: string;
   regex: RegExp;

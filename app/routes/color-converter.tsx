@@ -7,6 +7,13 @@ import { Input } from "~/components/ui/input/input";
 import { Palette, Copy, Check, RefreshCw, Pipette, Plus, Trash2 } from "lucide-react";
 import styles from "./color-converter.module.css";
 
+export function meta() {
+  return [
+    { title: "Color Converter - Netveris" },
+    { name: "description", content: "Convert colors between HEX, RGB, HSL, and more" },
+  ];
+}
+
 interface ColorValue {
   hex: string;
   rgb: { r: number; g: number; b: number };

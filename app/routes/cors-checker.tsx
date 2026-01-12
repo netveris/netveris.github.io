@@ -8,6 +8,13 @@ import { Label } from '../components/ui/label/label';
 import { Badge } from '../components/ui/badge/badge';
 import styles from './cors-checker.module.css';
 
+export function meta() {
+  return [
+    { title: "CORS Checker - Netveris" },
+    { name: "description", content: "Test and validate CORS configurations" },
+  ];
+}
+
 interface CORSResult {
   url: string;
   status: 'success' | 'error' | 'warning';

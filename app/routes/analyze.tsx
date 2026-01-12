@@ -10,6 +10,13 @@ import { exportAsJSON, exportAsText } from '../utils/export';
 import { addToHistory } from '../utils/storage';
 import styles from './analyze.module.css';
 
+export function meta() {
+  return [
+    { title: "Security Analyzer - Netveris" },
+    { name: "description", content: "Comprehensive security analysis for websites" },
+  ];
+}
+
 export default function SecurityAnalyzer() {
   const [url, setUrl] = useState('');
   const [analysisResult, setAnalysisResult] = useState<SecurityAnalysisResult | null>(null);

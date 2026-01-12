@@ -9,6 +9,13 @@ import { Input } from '../components/ui/input/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select/select';
 import styles from './aes-encryption.module.css';
 
+export function meta() {
+  return [
+    { title: "AES Encryption - Netveris" },
+    { name: "description", content: "Encrypt and decrypt data with AES algorithm" },
+  ];
+}
+
 export default function AESEncryption() {
   const [mode, setMode] = useState<'encrypt' | 'decrypt'>('encrypt');
   const [algorithm, setAlgorithm] = useState('AES-GCM');

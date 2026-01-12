@@ -5,6 +5,13 @@ import { useState, useEffect } from "react";
 import { getFavorites, toggleFavorite } from "~/utils/storage";
 import styles from "./favorites.module.css";
 
+export function meta() {
+  return [
+    { title: "Favorites - Netveris" },
+    { name: "description", content: "Your favorite security tools for quick access" },
+  ];
+}
+
 const TOOL_INFO: Record<string, { icon: React.ReactElement; title: string; description: string }> = {
   "/analyze": {
     icon: <Shield size={32} />,

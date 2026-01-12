@@ -7,6 +7,13 @@ import { Input } from "~/components/ui/input/input";
 import { Card } from "~/components/ui/card/card";
 import styles from "./api-security.module.css";
 
+export function meta() {
+  return [
+    { title: "API Security Tester - Netveris" },
+    { name: "description", content: "Test API endpoints for security vulnerabilities" },
+  ];
+}
+
 interface SecurityTest {
   name: string;
   status: "passed" | "failed" | "warning";

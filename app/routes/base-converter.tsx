@@ -6,6 +6,13 @@ import { Badge } from "~/components/ui/badge/badge";
 import { Binary, Copy, Check, Trash2, RefreshCw, ArrowDown } from "lucide-react";
 import styles from "./base-converter.module.css";
 
+export function meta() {
+  return [
+    { title: "Base Converter - Netveris" },
+    { name: "description", content: "Convert between binary, hex, decimal, and more" },
+  ];
+}
+
 type BaseType = "text" | "hex" | "decimal" | "binary" | "octal" | "base64";
 
 interface ConversionResult {
