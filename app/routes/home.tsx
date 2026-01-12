@@ -50,7 +50,10 @@ import styles from "./home.module.css";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Netveris - Security Analysis Tools" },
-    { name: "description", content: "Professional security analysis tools for HTTP headers, cookies, JWT tokens, and more" },
+    {
+      name: "description",
+      content: "Professional security analysis tools for HTTP headers, cookies, JWT tokens, and more",
+    },
   ];
 }
 
