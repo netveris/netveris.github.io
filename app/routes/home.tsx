@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router";
+import type { Route } from "./+types/home";
 import {
   Shield,
   Lock,
@@ -45,6 +46,13 @@ import { useKeyboardShortcuts } from "~/hooks/use-keyboard-shortcuts";
 import { KeyboardShortcutsDialog } from "~/components/keyboard-shortcuts-dialog";
 import { getHistory, getFavorites, toggleFavorite } from "~/utils/storage";
 import styles from "./home.module.css";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Netveris - Security Analysis Tools" },
+    { name: "description", content: "Professional security analysis tools for HTTP headers, cookies, JWT tokens, and more" },
+  ];
+}
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
