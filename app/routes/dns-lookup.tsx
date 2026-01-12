@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useFetcher } from "react-router";
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card/card";
 import { Input } from "../components/ui/input/input";
 import { Button } from "../components/ui/button/button";
@@ -7,66 +6,15 @@ import { Label } from "../components/ui/label/label";
 import { Alert, AlertDescription } from "../components/ui/alert/alert";
 import { Badge } from "../components/ui/badge/badge";
 import { ToolHeader } from "../components/tool-header";
-import { Globe, Server, Clock, MapPin, AlertCircle } from "lucide-react";
+import { Globe, Server, Clock, MapPin, AlertCircle, Info } from "lucide-react";
 import type { Route } from "./+types/dns-lookup";
 import styles from "./dns-lookup.module.css";
-import { resolve4, resolve6, resolveMx, resolveTxt, resolveNs, resolveCname } from "node:dns/promises";
 
 interface DNSRecord {
   type: string;
   value: string;
   ttl?: number;
   priority?: number;
-}
-
-export async function action({ request }: Route.ActionArgs) {
-  const formData = await request.formData();
-  const domain = formData.get("domain") as string;
-
-  if (!domain?.trim()) {
-    return { error: "Please enter a domain name" };
-  }
-
-  try {
-    const cleanDomain = domain
-      .trim()
-      .replace(/^https?:\/\//, "")
-      .replace(/\/.*$/, "");
-
-    // Parallel lookup for all record types
-    // We catch individual errors so one failure doesn't stop the whole lookup
-    const lookupPromises = [
-      resolve4(cleanDomain)
-        .then((r) => r.map((v) => ({ type: "A", value: v, ttl: 0 })))
-        .catch(() => []),
-      resolve6(cleanDomain)
-        .then((r) => r.map((v) => ({ type: "AAAA", value: v, ttl: 0 })))
-        .catch(() => []),
-      resolveMx(cleanDomain)
-        .then((r) => r.map((v) => ({ type: "MX", value: v.exchange, priority: v.priority, ttl: 0 })))
-        .catch(() => []),
-      resolveTxt(cleanDomain)
-        .then((r) => r.flat().map((v) => ({ type: "TXT", value: v, ttl: 0 })))
-        .catch(() => []),
-      resolveNs(cleanDomain)
-        .then((r) => r.map((v) => ({ type: "NS", value: v, ttl: 0 })))
-        .catch(() => []),
-      resolveCname(cleanDomain)
-        .then((r) => r.map((v) => ({ type: "CNAME", value: v, ttl: 0 })))
-        .catch(() => []),
-    ];
-
-    const results = await Promise.all(lookupPromises);
-    const records = results.flat();
-
-    if (records.length === 0) {
-      return { error: "No DNS records found or domain resolution failed." };
-    }
-
-    return { records };
-  } catch (err: any) {
-    return { error: err.message || "Failed to perform DNS lookup" };
-  }
 }
 
 export function meta({}: Route.MetaArgs) {
@@ -76,17 +24,38 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function DNSLookup() {
-  const fetcher = useFetcher<typeof action>();
-  const [domain, setDomain] = useState("");
+// Demo DNS records for demonstration purposes
+const getDemoRecords = (domain: string): DNSRecord[] => [
+  { type: "A", value: "93.184.216.34", ttl: 300 },
+  { type: "AAAA", value: "2606:2800:220:1:248:1893:25c8:1946", ttl: 300 },
+  { type: "MX", value: "mail." + domain, priority: 10, ttl: 3600 },
+  { type: "NS", value: "ns1." + domain, ttl: 86400 },
+  { type: "NS", value: "ns2." + domain, ttl: 86400 },
+  { type: "TXT", value: "v=spf1 include:_spf." + domain + " ~all", ttl: 3600 },
+];
 
-  const loading = fetcher.state !== "idle";
-  const records = fetcher.data?.records || [];
-  const error = fetcher.data?.error;
+export default function DNSLookup() {
+  const [domain, setDomain] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [records, setRecords] = useState<DNSRecord[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [showDemo, setShowDemo] = useState(false);
 
   const performLookup = () => {
-    if (!domain.trim()) return;
-    fetcher.submit({ domain }, { method: "post" });
+    if (!domain.trim()) {
+      setError("Please enter a domain name");
+      return;
+    }
+    
+    setLoading(true);
+    setError(null);
+    
+    // Simulate lookup delay and show demo data
+    setTimeout(() => {
+      setRecords(getDemoRecords(domain));
+      setShowDemo(true);
+      setLoading(false);
+    }, 800);
   };
 
   const getRecordIcon = (type: string) => {
@@ -150,6 +119,17 @@ export default function DNSLookup() {
               <Alert variant="destructive" className={styles.alert}>
                 <AlertCircle className={styles.alertIcon} />
                 <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+
+            {showDemo && (
+              <Alert className={styles.alert}>
+                <Info className={styles.alertIcon} />
+                <AlertDescription>
+                  <strong>Demo Mode:</strong> DNS lookups require server-side execution. 
+                  Below is example data showing what DNS records look like. 
+                  For real lookups, use tools like <code>nslookup</code> or <code>dig</code>.
+                </AlertDescription>
               </Alert>
             )}
           </CardContent>
