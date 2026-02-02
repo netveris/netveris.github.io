@@ -1,0 +1,11 @@
+# Robots.txt for Netveris Security Tools
+# https://netveris.github.io/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://netveris.github.io/sitemap.xml
+
+# Crawl-delay (optional, be nice to crawlers)
+Crawl-delay: 1
