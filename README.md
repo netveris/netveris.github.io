@@ -203,6 +203,300 @@ npm run start
 
 ---
 
+## 🏗️ System Architecture
+
+### High-Level Overview
+
+```mermaid
+flowchart TB
+    subgraph Client["🌐 Client Browser"]
+        UI["🖥️ User Interface"]
+        SW["⚡ Service Worker"]
+        LS["💾 Local Storage"]
+    end
+
+    subgraph App["⚛️ React Application"]
+        Router["🔀 React Router v7"]
+        Components["🧩 Components"]
+        Hooks["🪝 Custom Hooks"]
+        Utils["🔧 Utilities"]
+    end
+
+    subgraph Tools["🛠️ Security Tools Suite"]
+        direction TB
+        Security["🔐 Security Analysis"]
+        Crypto["🔑 Cryptography"]
+        Encoding["📝 Encoding/Hashing"]
+        DevTools["🛠️ Dev Utilities"]
+    end
+
+    UI --> Router
+    Router --> Components
+    Components --> Hooks
+    Components --> Utils
+    Hooks --> Tools
+    Utils --> Tools
+    SW -.-> LS
+    Tools -.-> LS
+
+    style Client fill:#1a1a2e,stroke:#00a3c7,stroke-width:2px,color:#fff
+    style App fill:#16213e,stroke:#e94560,stroke-width:2px,color:#fff
+    style Tools fill:#0f3460,stroke:#00ff88,stroke-width:2px,color:#fff
+```
+
+### Tool Categories Architecture
+
+```mermaid
+flowchart LR
+    subgraph SecurityTools["🔐 Security Analysis"]
+        direction TB
+        SA["Security Analyzer"]
+        JWT["JWT Suite"]
+        SSL["SSL Inspector"]
+        CORS["CORS Checker"]
+        CSP["CSP Generator"]
+        API["API Security"]
+        Privacy["Privacy Analyzer"]
+    end
+
+    subgraph CryptoTools["🔑 Cryptography"]
+        direction TB
+        AES["AES Encryption"]
+        RSA["RSA Generator"]
+        HMAC["HMAC Generator"]
+        Caesar["Caesar Cipher"]
+        XOR["XOR Cipher"]
+        TOTP["TOTP Generator"]
+        SecretGen["Secret Generator"]
+        PassGen["Password Generator"]
+    end
+
+    subgraph EncodingTools["📝 Encoding & Hashing"]
+        direction TB
+        Hash["Hash Tools"]
+        HashID["Hash Identifier"]
+        B64["Base64 Tools"]
+        URL["URL Encoder"]
+        HTML["HTML Entities"]
+        Base["Base Converter"]
+    end
+
+    subgraph DevUtilities["🛠️ Developer Tools"]
+        direction TB
+        JSON["JSON Formatter"]
+        URLParse["URL Parser"]
+        UUID["UUID Generator"]
+        Time["Timestamp Converter"]
+        Regex["Regex Tester"]
+        Diff["Text Diff"]
+        Color["Color Converter"]
+        HTTP["HTTP Builder"]
+        DNS["DNS Lookup"]
+        Subnet["Subnet Calculator"]
+        Sanitize["Data Sanitizer"]
+    end
+
+    User((👤 User)) --> SecurityTools
+    User --> CryptoTools
+    User --> EncodingTools
+    User --> DevUtilities
+
+    style SecurityTools fill:#dc3545,stroke:#fff,stroke-width:2px,color:#fff
+    style CryptoTools fill:#6f42c1,stroke:#fff,stroke-width:2px,color:#fff
+    style EncodingTools fill:#fd7e14,stroke:#fff,stroke-width:2px,color:#fff
+    style DevUtilities fill:#20c997,stroke:#fff,stroke-width:2px,color:#fff
+    style User fill:#0d6efd,stroke:#fff,stroke-width:3px,color:#fff
+```
+
+### Component Architecture
+
+```mermaid
+flowchart TB
+    subgraph Root["📦 App Root"]
+        RootTSX["root.tsx"]
+    end
+
+    subgraph Layout["🎨 Layout Layer"]
+        Nav["Navigation"]
+        Theme["Theme Toggle"]
+        Toast["Toast System"]
+    end
+
+    subgraph Pages["📄 Route Pages"]
+        Home["🏠 Home"]
+        Dashboard["📊 Dashboard"]
+        Favorites["⭐ Favorites"]
+        Recent["🕐 Recent"]
+        Docs["📚 Documentation"]
+        ToolPages["🛠️ 40+ Tool Pages"]
+    end
+
+    subgraph SharedUI["🧩 Shared Components"]
+        ToolHeader["Tool Header"]
+        CodeWindow["Code Window"]
+        CodeBlock["Code Block"]
+        AnalysisPanel["Analysis Panel"]
+        IssueCard["Issue Card"]
+        RiskBadge["Risk Badge"]
+        SecurityScore["Security Score"]
+        ExportMenu["Export Menu"]
+        KeyboardShortcuts["Keyboard Shortcuts"]
+    end
+
+    subgraph UIKit["🎯 UI Primitives"]
+        Button["Button"]
+        Input["Input"]
+        Select["Select"]
+        Dialog["Dialog"]
+        Tabs["Tabs"]
+        Card["Card"]
+        Badge["Badge"]
+        Tooltip["Tooltip"]
+    end
+
+    RootTSX --> Layout
+    Layout --> Pages
+    Pages --> SharedUI
+    SharedUI --> UIKit
+
+    style Root fill:#e91e63,stroke:#fff,stroke-width:2px,color:#fff
+    style Layout fill:#9c27b0,stroke:#fff,stroke-width:2px,color:#fff
+    style Pages fill:#673ab7,stroke:#fff,stroke-width:2px,color:#fff
+    style SharedUI fill:#3f51b5,stroke:#fff,stroke-width:2px,color:#fff
+    style UIKit fill:#2196f3,stroke:#fff,stroke-width:2px,color:#fff
+```
+
+### Data Flow Architecture
+
+```mermaid
+flowchart LR
+    subgraph Input["📥 User Input"]
+        Text["Text Input"]
+        File["File Upload"]
+        Paste["Clipboard Paste"]
+    end
+
+    subgraph Processing["⚙️ Processing Layer"]
+        Validate["✅ Validation"]
+        Transform["🔄 Transform"]
+        Analyze["🔍 Analysis"]
+    end
+
+    subgraph Output["📤 Output"]
+        Display["🖥️ Display Results"]
+        Copy["📋 Copy to Clipboard"]
+        Export["💾 Export File"]
+        Share["🔗 Share Link"]
+    end
+
+    subgraph Storage["💾 Persistence"]
+        LocalStorage["Local Storage"]
+        Favorites["Favorites"]
+        History["Recent History"]
+        Settings["User Settings"]
+    end
+
+    Input --> Processing
+    Processing --> Output
+    Processing -.-> Storage
+    Storage -.-> Input
+
+    style Input fill:#4caf50,stroke:#fff,stroke-width:2px,color:#fff
+    style Processing fill:#ff9800,stroke:#fff,stroke-width:2px,color:#fff
+    style Output fill:#2196f3,stroke:#fff,stroke-width:2px,color:#fff
+    style Storage fill:#9c27b0,stroke:#fff,stroke-width:2px,color:#fff
+```
+
+### Technology Stack
+
+```mermaid
+flowchart TB
+    subgraph Frontend["🎨 Frontend Layer"]
+        React["⚛️ React 19"]
+        TS["📘 TypeScript 5"]
+        CSS["🎨 CSS Modules"]
+    end
+
+    subgraph Build["🔨 Build Tools"]
+        Vite["⚡ Vite 7"]
+        ESBuild["📦 ESBuild"]
+        PostCSS["🎨 PostCSS"]
+    end
+
+    subgraph Routing["🔀 Routing"]
+        RR7["React Router 7"]
+        FileRoutes["File-based Routes"]
+    end
+
+    subgraph UI["🧩 UI Libraries"]
+        Radix["Radix UI"]
+        Lucide["Lucide Icons"]
+        Recharts["Recharts"]
+        Sonner["Sonner Toasts"]
+    end
+
+    subgraph Forms["📝 Form Handling"]
+        RHF["React Hook Form"]
+        Zod["Zod Validation"]
+    end
+
+    subgraph Deploy["🚀 Deployment"]
+        GHPages["GitHub Pages"]
+        Docker["Docker"]
+        PWA["PWA Support"]
+    end
+
+    Frontend --> Build
+    Build --> Routing
+    Frontend --> UI
+    Frontend --> Forms
+    Build --> Deploy
+
+    style Frontend fill:#61dafb,stroke:#000,stroke-width:2px,color:#000
+    style Build fill:#646cff,stroke:#fff,stroke-width:2px,color:#fff
+    style Routing fill:#ca4245,stroke:#fff,stroke-width:2px,color:#fff
+    style UI fill:#ff6b6b,stroke:#fff,stroke-width:2px,color:#fff
+    style Forms fill:#00d4aa,stroke:#000,stroke-width:2px,color:#000
+    style Deploy fill:#2ea44f,stroke:#fff,stroke-width:2px,color:#fff
+```
+
+### Request Flow Sequence
+
+```mermaid
+sequenceDiagram
+    participant U as 👤 User
+    participant B as 🌐 Browser
+    participant SW as ⚡ Service Worker
+    participant R as 🔀 Router
+    participant C as 🧩 Component
+    participant T as 🛠️ Tool Logic
+    participant S as 💾 Storage
+
+    U->>B: Navigate to Tool
+    B->>SW: Check Cache
+    SW-->>B: Return Cached/Fetch
+    B->>R: Route Match
+    R->>C: Render Component
+    C->>T: Initialize Tool
+    T->>S: Load Preferences
+    S-->>T: Return Settings
+    T-->>C: Ready State
+    C-->>U: Display UI
+    
+    U->>C: Input Data
+    C->>T: Process
+    T->>T: Validate & Transform
+    T-->>C: Return Results
+    C-->>U: Show Output
+    
+    U->>C: Save to Favorites
+    C->>S: Store Data
+    S-->>C: Confirm
+    C-->>U: Show Success
+```
+
+---
+
 ## 🛠️ Tech Stack
 
 <table>
@@ -242,6 +536,43 @@ npm run start
 ---
 
 ## 📁 Project Structure
+
+```mermaid
+flowchart TB
+    subgraph Root["📦 netveris/"]
+        subgraph AppDir["📁 app/"]
+            Components["📁 components/"]
+            Hooks["📁 hooks/"]
+            Routes["📁 routes/"]
+            Styles["📁 styles/"]
+            Types["📁 types/"]
+            Utils["📁 utils/"]
+            RootFile["📄 root.tsx"]
+            RoutesFile["📄 routes.ts"]
+        end
+        
+        subgraph PublicDir["📁 public/"]
+            Manifest["📄 manifest.json"]
+            ServiceWorker["📄 sw.js"]
+            Robots["📄 robots.txt"]
+            Sitemap["📄 sitemap.xml"]
+        end
+        
+        subgraph ConfigFiles["⚙️ Config Files"]
+            Package["📄 package.json"]
+            TSConfig["📄 tsconfig.json"]
+            ViteConfig["📄 vite.config.ts"]
+            Docker["🐳 Dockerfile"]
+            DockerDev["🐳 Dockerfile.dev"]
+            Compose["🐳 docker-compose.yml"]
+        end
+    end
+
+    style Root fill:#1a1a2e,stroke:#00a3c7,stroke-width:2px,color:#fff
+    style AppDir fill:#16213e,stroke:#e94560,stroke-width:2px,color:#fff
+    style PublicDir fill:#0f3460,stroke:#00ff88,stroke-width:2px,color:#fff
+    style ConfigFiles fill:#533483,stroke:#ffd700,stroke-width:2px,color:#fff
+```
 
 ```
 netveris/
